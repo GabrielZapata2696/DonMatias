@@ -1,0 +1,141 @@
+.navigation {
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 0 20px;
+  height: 70px; /* Keep fixed height for navigation */
+}
+
+.nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo a {
+  color: #3f51b5;
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.logo a:hover {
+  color: #303f9f;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #3f51b5;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  transition: max-height 0.3s ease; /* Add transition for smooth height changes */
+}
+
+.nav-links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-links a:hover {
+  color: #3f51b5;
+  background: rgba(63, 81, 181, 0.1);
+}
+
+.nav-links a.active {
+  color: #3f51b5;
+  background: rgba(63, 81, 181, 0.1);
+}
+
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 2px;
+  background-color: #3f51b5;
+}
+
+/* Mobile Navigation with dvh */
+@media (max-width: 768px) {
+  .nav-container {
+    height: auto;
+    padding: 1rem 0;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: flex; /* Always display, but control visibility with max-height */
+    max-height: 0; /* Hidden by default */
+    overflow: hidden;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    background: white;
+    padding: 0 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+
+  .nav-links.open {
+    max-height: 85dvh; /* Mobile dvh for open menu */
+    overflow-y: auto; /* Enable scrolling if content exceeds height */
+    padding: 1rem;
+  }
+
+  .nav-links a {
+    width: 100%;
+    text-align: center;
+    padding: 0.75rem;
+  }
+
+  .nav-links a.active::after {
+    width: 50px;
+  }
+}
+
+/* Tablet Navigation with dvh */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .nav-links.open {
+    max-height: 90dvh; /* Tablet dvh */
+  }
+}
+
+/* Desktop Navigation */
+@media (min-width: 1025px) {
+  .nav-links {
+    height: auto; /* Default height for desktop */
+  }
+}

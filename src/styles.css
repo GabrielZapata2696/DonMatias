@@ -1,1 +1,101 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  /* Fallback for older browsers */
+  height: 100vh;
+  /* Modern browsers with dvh support */
+  height: 100dvh;
+  min-height: 100dvh;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  background-color: #f9f9f9;
+  transition: height 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: #3f51b5;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #303f9f;
+}
+
+/* Global utility classes */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+  min-height: 100dvh;
+}
+
+.section {
+  padding: 60px 0;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Button styles */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+/* Common heading styles */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+/* Common spacing */
+p {
+  margin-bottom: 1rem;
+}
+
+/* Ensure images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Responsive dvh adjustments */
+@media screen and (max-width: 768px) {
+  html, body {
+    height: 85dvh;
+    min-height: 85dvh;
+  }
+  
+  .container {
+    min-height: 85dvh;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  html, body {
+    height: 90dvh;
+    min-height: 90dvh;
+  }
+  
+  .container {
+    min-height: 90dvh;
+  }
+}
+
+/* Preserve Angular Material font */
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
