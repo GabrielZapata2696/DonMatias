@@ -55,9 +55,7 @@
               ],
               "outputHashing": "all",
               "prerender": false,
-              "ssr": {
-                "entry": "src/server.ts"
-              }
+              "ssr": false
             },
                     "development": {
                       "optimization": false,
