@@ -1,5 +1,5 @@
 import { APP_BASE_HREF } from '@angular/common';
-import { AppEngine, isMainModule } from '@netlify/angular-runtime';
+import { CommonEngine, isMainModule } from '@angular/ssr/node';
 import express from 'express';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -10,7 +10,7 @@ const browserDistFolder = resolve(serverDistFolder, '../browser');
 const indexHtml = join(serverDistFolder, 'index.server.html');
 
 const app = express();
-const appEngine = new AppEngine();
+const commonEngine = new CommonEngine();
 
 /**
  * Example Express Rest API endpoints can be defined here.
@@ -41,7 +41,7 @@ app.get(
 app.get('**', (req, res, next) => {
   const { protocol, originalUrl, baseUrl, headers } = req;
 
-  appEngine
+  commonEngine
     .render({
       bootstrap,
       documentFilePath: indexHtml,
@@ -49,8 +49,8 @@ app.get('**', (req, res, next) => {
       publicPath: browserDistFolder,
       providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
     })
-    .then((html) =e res.send(html))
-    .catch((err) =e next(err));
+    .then((html) => res.send(html))
+    .catch((err) => next(err));
 });
 
 /**

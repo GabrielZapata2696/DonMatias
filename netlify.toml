@@ -1,11 +1,8 @@
 [build]
-  command = "npm run build"
-  publish = "dist/brochure"
-
-[functions]
-  external_node_modules = ["@angular/ssr", "@netlify/angular-runtime"]
+  command = "ng build --configuration=production"
+  publish = "dist/brochure/browser"
 
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/server"
+  to = "/index.html"
   status = 200
