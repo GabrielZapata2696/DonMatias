@@ -1,0 +1,42 @@
+<div class="contratacion-container">
+  <header class="contratacion-header">
+    <h1>Planes de Contratación</h1>
+    <p>Explore nuestros diferentes planes y elija el que mejor se adapte a sus necesidades</p>
+  </header>
+
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let contrato of contratos">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{contrato.title}}
+        </mat-panel-title>
+        <mat-panel-description>
+          {{contrato.description}}
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+      <div class="contrato-content">
+        <h3>Características:</h3>
+        <ul class="features-list">
+          <li *ngFor="let feature of contrato.features">
+            <mat-icon>check_circle</mat-icon>
+            <span>{{feature}}</span>
+          </li>
+        </ul>
+        <div class="price-section">
+          <h2>{{contrato.price}}</h2>
+        </div>
+        <div class="action-buttons">
+          <button mat-raised-button color="primary">
+            <mat-icon>shopping_cart</mat-icon>
+            Contratar Ahora
+          </button>
+          <button mat-button color="accent">
+            <mat-icon>info</mat-icon>
+            Más Información
+          </button>
+        </div>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

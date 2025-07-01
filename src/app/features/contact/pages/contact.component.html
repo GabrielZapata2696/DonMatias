@@ -1,0 +1,69 @@
+<div class="contact-container">
+  <header class="contact-header">
+    <h1>Contáctenos</h1>
+    <p>Estamos aquí para ayudarle. Póngase en contacto con nosotros para discutir cómo podemos ayudar a su negocio a crecer.</p>
+  </header>
+
+  <div class="contact-content">
+    <div class="contact-info">
+      <mat-card *ngFor="let info of contactInfo" class="info-card">
+        <mat-icon class="info-icon">{{info.icon}}</mat-icon>
+        <h3>{{info.title}}</h3>
+        <p *ngFor="let detail of info.details" [innerHTML]="detail"></p>
+      </mat-card>
+    </div>
+
+    <div class="contact-form">
+      <mat-card>
+        <h2>Envíenos un mensaje</h2>
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matInput formControlName="name" placeholder="Su nombre">
+            <mat-error *ngIf="contactForm.get('name')?.hasError('required')">
+              El nombre es requerido
+            </mat-error>
+            <mat-error *ngIf="contactForm.get('name')?.hasError('minlength')">
+              El nombre debe tener al menos 3 caracteres
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Su email">
+            <mat-error *ngIf="contactForm.get('email')?.hasError('required')">
+              El email es requerido
+            </mat-error>
+            <mat-error *ngIf="contactForm.get('email')?.hasError('email')">
+              Por favor ingrese un email válido
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Asunto</mat-label>
+            <input matInput formControlName="subject" placeholder="Asunto">
+            <mat-error *ngIf="contactForm.get('subject')?.hasError('required')">
+              El asunto es requerido
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Mensaje</mat-label>
+            <textarea matInput formControlName="message" rows="5" placeholder="Su mensaje"></textarea>
+            <mat-error *ngIf="contactForm.get('message')?.hasError('required')">
+              El mensaje es requerido
+            </mat-error>
+            <mat-error *ngIf="contactForm.get('message')?.hasError('minlength')">
+              El mensaje debe tener al menos 10 caracteres
+            </mat-error>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" type="submit" [disabled]="!contactForm.valid">
+            <mat-icon>send</mat-icon>
+            Enviar Mensaje
+          </button>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>

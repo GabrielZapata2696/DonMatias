@@ -1,0 +1,74 @@
+/* Global layout styles */
+:host {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  display: block;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden; /* Prevent horizontal scrolling from slider */
+}
+
+/* Navigation spacing */
+app-navigation {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Header (slider) spacing */
+app-header {
+  width: 100%;
+  z-index: 1;
+  margin-bottom: 30px; /* Add space after the slider */
+}
+
+.main-content {
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0px 20px;
+  position: relative;
+  z-index: 2;
+  min-height: 200px; /* Ensure minimum content height */
+  margin-bottom: 40px; /* Add space before footer */
+}
+
+/* Footer spacing */
+app-footer {
+  width: 100%;
+  margin-top: auto; /* Push footer to bottom when content is short */
+  z-index: 1;
+  position: relative;
+  background-color: #f8f9fa; /* Light background to match design */
+  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.05); /* Subtle shadow at top */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  app-header {
+    margin-bottom: 20px;
+  }
+
+  .main-content {
+    padding: 0px 15px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  app-header {
+    margin-bottom: 15px;
+  }
+
+  .main-content {
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+}

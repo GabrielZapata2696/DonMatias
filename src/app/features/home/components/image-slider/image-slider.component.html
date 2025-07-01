@@ -1,0 +1,63 @@
+<div
+  class="slider-container"
+  #sliderContainer
+  (touchstart)="onTouchStart($event)"
+  (touchmove)="onTouchMove($event)"
+  (touchend)="onTouchEnd()"
+  role="region"
+  aria-label="Image Slider"
+>
+  <!-- Slides container -->
+  <div class="slides-wrapper">
+    <div
+      class="slide"
+      *ngFor="let image of images; let i = index"
+      [class.active]="i === currentIndex"
+      [attr.aria-hidden]="i !== currentIndex"
+    >
+      <div class="slide-content">
+        <img
+          [src]="image.src"
+          [alt]="image.alt"
+          (error)="handleImageError($event)"
+          loading="lazy"
+          class="slide-image"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation Controls -->
+  <div class="slider-controls">
+    <button
+      mat-icon-button
+      class="nav-btn prev-btn"
+      (click)="prevSlide()"
+      aria-label="Previous slide"
+    >
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      class="nav-btn next-btn"
+      (click)="nextSlide()"
+      aria-label="Next slide"
+    >
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+
+  <!-- Slide Indicators/Dots -->
+  <!-- Slide Indicators -->
+  <div class="slide-indicators" role="tablist">
+    <button
+      *ngFor="let image of images; let i = index"
+      class="indicator-dot"
+      [class.active]="i === currentIndex"
+      (click)="goToSlide(i)"
+      [attr.aria-label]="'Go to slide ' + (i + 1)"
+      [attr.aria-selected]="i === currentIndex"
+      role="tab"
+    ></button>
+  </div>
+</div>

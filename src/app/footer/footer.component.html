@@ -1,0 +1,64 @@
+<mat-progress-bar
+  class="green-progress"
+  [mode]="mode"
+  [value]="value"
+  [bufferValue]="bufferValue"
+>
+</mat-progress-bar>
+<footer
+  class="footer"
+  (mouseover)="onMouseOverFooter()"
+  (mouseout)="onMouseOutFooter()"
+>
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>
+        {{ nombreEmpresa2 }}
+      </h3>
+      <p>
+        <strong>{{ nombreEmpresa }}</strong> | Transformando Territorios.
+      </p>
+    </div>
+    <div class="footer-section">
+      <h3>Navegación</h3>
+      <ul>
+        @for (route of routes; track $index) {
+        <li>
+          <a [routerLink]="route.path">{{ route.label }}</a>
+        </li>
+        }
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Contacto</h3>
+      <p>Email: Empresadedesarrolloterritorial&#64;gmail.com</p>
+      <p>Teléfono: +57 313-681-7407</p>
+      <p>Oficina: Calle 9 sur # 79C - 139</p>
+      <p>Medellín, Antioquia</p>
+      <p class="underline"><strong>Nuestras redes sociales</strong></p>
+      <div class="social-icons">
+        <a
+          href="https://www.facebook.com/profile.php?id=61564395025526"
+          aria-label="Facebook"
+          target="_blank"
+          ><i class="fab fa-facebook"></i
+        ></a>
+        <a href="#" aria-label="Twitter" target="_blank"
+          ><i class="fab fa-twitter"></i
+        ></a>
+        <a
+          href="https://www.instagram.com/edt_donmatias/"
+          aria-label="Instagram"
+          target="_blank"
+          ><i class="fab fa-instagram"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    <p>
+      &copy; {{ currentDate.getFullYear() }}
+      <strong>{{ nombreEmpresa }}</strong> - Todos los derechos reservados.
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,48 @@
+<div class="about-container">
+  <header class="about-header">
+    <h1>Sobre Nosotros</h1>
+    <p>Conozca nuestra historia, nuestro equipo y lo que nos hace diferentes</p>
+  </header>
+
+  <section class="company-story">
+    <mat-card>
+      <div class="story-content">
+        <div class="story-text">
+          <h2>Nuestra Historia</h2>
+          <p>Fundada en 2010, comenzamos con una simple misión: ayudar a las empresas a prosperar en la era digital. A lo largo de los años, hemos crecido desde un pequeño equipo de innovadores apasionados hasta convertirnos en una fuerza líder en soluciones empresariales.</p>
+          <p>Nuestro viaje ha estado marcado por el aprendizaje continuo, la adaptación y el compromiso con la excelencia. Hemos ayudado a cientos de empresas a transformar sus operaciones y alcanzar sus objetivos.</p>
+        </div>
+        <div class="story-image">
+          <div class="placeholder-image">Historia de la Compañía</div>
+        </div>
+      </div>
+    </mat-card>
+  </section>
+
+  <section class="values-section">
+    <h2>Nuestros Valores</h2>
+    <div class="values-grid">
+      <mat-card class="value-card" *ngFor="let value of companyValues">
+        <mat-icon class="value-icon">{{value.icon}}</mat-icon>
+        <h3>{{value.title}}</h3>
+        <p>{{value.description}}</p>
+      </mat-card>
+    </div>
+  </section>
+
+  <section class="team-section">
+    <h2>Nuestro Equipo</h2>
+    <div class="team-grid">
+      <mat-card class="team-card" *ngFor="let member of teamMembers">
+        <div class="member-image">
+          <div class="placeholder-image">{{member.name}}</div>
+        </div>
+        <mat-card-content>
+          <h3>{{member.name}}</h3>
+          <p class="position">{{member.position}}</p>
+          <p class="bio">{{member.bio}}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+</div>

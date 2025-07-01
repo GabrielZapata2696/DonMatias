@@ -1,0 +1,22 @@
+<nav class="navigation">
+  <div class="nav-container">
+    <div class="logo">
+      <button class="menu-toggle" (click)="toggleMenu()">
+        <span class="material-icons">{{ isMenuOpen ? "close" : "menu" }}</span>
+      </button>
+      <a routerLink="/" class="nombre-empresa">{{ nombreEmpresa }}</a>
+    </div>
+    <div class="nav-links" [class.open]="isMenuOpen">
+      @for (route of routes; track route.path) {
+      <a
+        [routerLink]="route.path"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        (click)="isMenuOpen = false"
+      >
+        {{ route.label }}
+      </a>
+      }
+    </div>
+  </div>
+</nav>

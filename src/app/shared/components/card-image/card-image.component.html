@@ -1,0 +1,45 @@
+<section class="company-story">
+  <mat-card>
+    <div class="story-content">
+      <div class="story-text align-self-center">
+        @if (origen === 'home') {
+        <p class="h3">
+          Aliarse con el Fondo Mixto <br />
+          <strong class="nombre-empresa display-6"> D O N M A T Í A S </strong>
+        </p>
+
+        <p class="fs-5">
+          Es dar un paso seguro hacia el desarrollo <br />
+          <strong>Eficiente, Transparente y con Impacto real</strong>.
+        </p>
+
+        } @if (origen !== 'home') {
+        <h2>{{ titulo }}</h2>
+
+        <p>
+          Fundada en 2010, comenzamos con una simple misión: ayudar a las
+          empresas a prosperar en la era digital. A lo largo de los años, hemos
+          crecido desde un pequeño equipo de innovadores apasionados hasta
+          convertirnos en una fuerza líder en soluciones empresariales.
+        </p>
+        <p>
+          Nuestro viaje ha estado marcado por el aprendizaje continuo, la
+          adaptación y el compromiso con la excelencia. Hemos ayudado a cientos
+          de empresas a transformar sus operaciones y alcanzar sus objetivos.
+        </p>
+        }
+      </div>
+      <div class="story-image">
+        <div class="placeholder-image">
+          <source [srcset]="" media="(min-width: 720px)" />
+          <img
+            [src]="imagen"
+            class="imagen"
+            alt="Imagen dinámica"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</section>

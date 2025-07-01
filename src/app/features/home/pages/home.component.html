@@ -1,0 +1,86 @@
+<div class="homepage">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Transformando Territorios</h1>
+      <hr class="solid" />
+      <p class="text-justify">
+        {{ textDescripcion }}
+      </p>
+
+      <p>
+        <strong class="nombre-empresa-titulo">D O N M A T Í A S </strong>-
+        Impulsamos el progreso. Transformamos realidades.
+      </p>
+
+      <div class="hero-buttons">
+        <a routerLink="/servicios" class="btn primary">Nuestros servicios</a>
+        <a routerLink="/contacto" class="btn secondary">Contáctanos</a>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <card-image [origen]="origen" [imagen]="imagen"></card-image>
+    <!-- <h5>{{  }}</h5> -->
+  </section>
+
+  <!-- Features Section -->
+  <section class="features">
+    <h2 class="section-title">Valor Agregado</h2>
+
+    <div class="feature-cards">
+      <mat-card class="feature-card">
+        <div class="row">
+          <div class="col-2 col-sm-4">
+            <mat-icon>trending_up</mat-icon>
+          </div>
+
+          <div class="col-10 col-sm-8">
+            <h3>Business Growth</h3>
+          </div>
+        </div>
+        <p>Strategic solutions to help your business reach new heights</p>
+      </mat-card>
+
+      <mat-card class="feature-card">
+        <div class="row">
+          <div class="col-2 col-sm-4">
+            <mat-icon>settings</mat-icon>
+          </div>
+          <div class="col-10 col-sm-8">
+            <h3>Custom Solutions</h3>
+          </div>
+        </div>
+        <p>Tailored approaches to meet your specific needs</p>
+      </mat-card>
+
+      <mat-card class="feature-card">
+        <div class="row">
+          <div class="col-2 col-sm-4">
+            <mat-icon>groups</mat-icon>
+          </div>
+          <div class="col-10 col-sm-8">
+            <h3>Expert Team</h3>
+          </div>
+        </div>
+        <p>Dedicated professionals committed to your success</p>
+      </mat-card>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>El Futuro Empieza Aquí</h1>
+      <hr class="solid" />
+      <p class="text-justify">
+        {{ textDescripcion2 }}
+      </p>
+
+      <div class="hero-buttons">
+        <a routerLink="/contacto" class="btn primary">Contáctanos</a>
+      </div>
+    </div>
+  </section>
+</div>

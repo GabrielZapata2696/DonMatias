@@ -5,19 +5,27 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   /* Fallback for older browsers */
   height: 100vh;
   /* Modern browsers with dvh support */
   height: 100dvh;
   min-height: 100dvh;
-  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
   line-height: 1.6;
   background-color: #f9f9f9;
   transition: height 0.3s ease;
 }
-
+.nombre-empresa {
+  background: linear-gradient(135deg, #3f51b5 0%, #4ba2a3 75%, #c4f29b 100%);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+}
 a {
   text-decoration: none;
   color: #3f51b5;
@@ -57,7 +65,12 @@ a:hover {
 }
 
 /* Common heading styles */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 600;
   line-height: 1.3;
   margin-bottom: 1rem;
@@ -76,26 +89,31 @@ img {
 
 /* Responsive dvh adjustments */
 @media screen and (max-width: 768px) {
-  html, body {
+  html,
+  body {
     height: 85dvh;
     min-height: 85dvh;
   }
-  
+
   .container {
-    min-height: 85dvh;
+    /* min-height: 85dvh; */
   }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1024px) {
-  html, body {
+  html,
+  body {
     height: 90dvh;
     min-height: 90dvh;
   }
-  
+
   .container {
     min-height: 90dvh;
   }
 }
 
 /* Preserve Angular Material font */
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

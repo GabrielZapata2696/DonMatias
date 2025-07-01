@@ -1,0 +1,105 @@
+.contratacion-container {
+  max-width: 800px;
+  margin: 15px auto;
+  padding: 0 20px;
+}
+
+.contratacion-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contratacion-header h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 16px;
+}
+
+.contratacion-header p {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+mat-accordion {
+  display: block;
+  margin-bottom: 40px;
+}
+
+mat-expansion-panel {
+  margin-bottom: 16px;
+}
+
+mat-panel-title {
+  color: #3f51b5;
+  font-weight: 500;
+}
+
+mat-panel-description {
+  color: #666;
+}
+
+.contrato-content {
+  padding: 20px 0;
+}
+
+.contrato-content h3 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+}
+
+.features-list li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  color: #555;
+}
+
+.features-list mat-icon {
+  color: #4caf50;
+  margin-right: 8px;
+}
+
+.price-section {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.price-section h2 {
+  color: #3f51b5;
+  font-size: 2.5rem;
+  font-weight: 500;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.action-buttons button {
+  min-width: 160px;
+}
+
+.action-buttons mat-icon {
+  margin-right: 8px;
+}
+
+@media (max-width: 600px) {
+  .contratacion-header h1 {
+    font-size: 2rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-buttons button {
+    width: 100%;
+  }
+}
