@@ -6,7 +6,11 @@ import { interval, Subscription } from 'rxjs';
 
 interface SlideImage {
   src: string;
+  srcWebp: string;
+  srcMobile: string;
+  srcMobileWebp: string;
   alt: string;
+  loaded?: boolean;
 }
 
 @Component({
@@ -22,35 +26,63 @@ export class ImageSliderComponent implements OnInit, OnDestroy {
   // Fallback image for error handling - using direct image URL
   fallbackImageUrl = 'https://placehold.co/1600x900/cccccc/666666?text=Image+Not+Available';
 
-  // Sample images array with placeholder URLs (replace with your actual images when ready)
+  // Optimized images with WebP format for better performance
   images: SlideImage[] = [
     {
-      src: 'imagenes/construction-project.png',
-      alt: 'Construction Project Image - Modern building development'
+      src: 'imagenes/optimized/construction-project.jpg',
+      srcWebp: 'imagenes/optimized/construction-project.webp',
+      srcMobile: 'imagenes/optimized/construction-project-thumb.jpg',
+      srcMobileWebp: 'imagenes/optimized/construction-project-thumb.webp',
+      alt: 'Construction Project Image - Modern building development',
+      loaded: false
     },
     {
-      src: 'imagenes/main-construction-project.png',
-      alt: 'Main Construction Project - Large scale development'
+      src: 'imagenes/optimized/main-construction-project.jpg',
+      srcWebp: 'imagenes/optimized/main-construction-project.webp',
+      srcMobile: 'imagenes/optimized/main-construction-project-thumb.jpg',
+      srcMobileWebp: 'imagenes/optimized/main-construction-project-thumb.webp',
+      alt: 'Main Construction Project - Large scale development',
+      loaded: false
     },
     {
-      src: 'imagenes/main-park-project.png',
-      alt: 'Main Park Project - Urban green space development'
+      src: 'imagenes/optimized/main-park-project.jpg',
+      srcWebp: 'imagenes/optimized/main-park-project.webp',
+      srcMobile: 'imagenes/optimized/main-park-project-thumb.jpg',
+      srcMobileWebp: 'imagenes/optimized/main-park-project-thumb.webp',
+      alt: 'Main Park Project - Urban green space development',
+      loaded: false
     },
     {
-      src: 'imagenes/main-road-project.png',
-      alt: 'Main Road Project - Infrastructure development'
+      src: 'imagenes/optimized/main-road-project.jpg',
+      srcWebp: 'imagenes/optimized/main-road-project.webp',
+      srcMobile: 'imagenes/optimized/main-road-project-thumb.jpg',
+      srcMobileWebp: 'imagenes/optimized/main-road-project-thumb.webp',
+      alt: 'Main Road Project - Infrastructure development',
+      loaded: false
     },
     {
-      src: 'imagenes/park-project.png',
-      alt: 'Park Project - Community space development'
+      src: 'imagenes/optimized/park-project.jpg',
+      srcWebp: 'imagenes/optimized/park-project.webp',
+      srcMobile: 'imagenes/optimized/park-project-thumb.jpg',
+      srcMobileWebp: 'imagenes/optimized/park-project-thumb.webp',
+      alt: 'Park Project - Community space development',
+      loaded: false
     },
     {
-      src: 'imagenes/pipe-project.png',
-      alt: 'Pipe Project - Utility infrastructure'
+      src: 'imagenes/optimized/pipe-project.jpg',
+      srcWebp: 'imagenes/optimized/pipe-project.webp',
+      srcMobile: 'imagenes/optimized/pipe-project-thumb.jpg',
+      srcMobileWebp: 'imagenes/optimized/pipe-project-thumb.webp',
+      alt: 'Pipe Project - Utility infrastructure',
+      loaded: false
     },
     {
-      src: 'imagenes/road-project.png',
-      alt: 'Road Project - Transportation infrastructure'
+      src: 'imagenes/optimized/road-project.jpg',
+      srcWebp: 'imagenes/optimized/road-project.webp',
+      srcMobile: 'imagenes/optimized/road-project-thumb.jpg',
+      srcMobileWebp: 'imagenes/optimized/road-project-thumb.webp',
+      alt: 'Road Project - Transportation infrastructure',
+      loaded: false
     }
   ];
 
@@ -75,12 +107,54 @@ export class ImageSliderComponent implements OnInit, OnDestroy {
     this.startAutoPlay();
   }
 
-  // Add preloading mechanism for smoother transitions
+  // Enhanced preloading mechanism for smoother transitions
   private preloadImages(): void {
-    this.images.forEach(image => {
-      const img = new Image();
-      img.src = image.src;
-    });
+    // Preload first image immediately
+    this.preloadImage(0);
+    
+    // Preload next few images for better UX
+    setTimeout(() => {
+      for (let i = 1; i < Math.min(3, this.images.length); i++) {
+        this.preloadImage(i);
+      }
+    }, 500);
+    
+    // Preload remaining images after initial load
+    setTimeout(() => {
+      for (let i = 3; i < this.images.length; i++) {
+        this.preloadImage(i);
+      }
+    }, 2000);
+  }
+  
+  private preloadImage(index: number): void {
+    if (index < 0 || index >= this.images.length) return;
+    
+    const image = this.images[index];
+    
+    // Preload WebP version
+    const webpImg = new Image();
+    webpImg.src = image.srcWebp;
+    
+    // Preload JPEG fallback
+    const jpegImg = new Image();
+    jpegImg.src = image.src;
+    
+    // Preload mobile versions
+    const mobileWebpImg = new Image();
+    mobileWebpImg.src = image.srcMobileWebp;
+    
+    const mobileJpegImg = new Image();
+    mobileJpegImg.src = image.srcMobile;
+    
+    // Mark as loaded when main image loads
+    webpImg.onload = () => {
+      this.images[index].loaded = true;
+    };
+    
+    jpegImg.onload = () => {
+      this.images[index].loaded = true;
+    };
   }
 
   ngOnDestroy(): void {
@@ -90,17 +164,34 @@ export class ImageSliderComponent implements OnInit, OnDestroy {
   // Navigation methods
   nextSlide(): void {
     this.currentIndex = (this.currentIndex + 1) % this.images.length;
+    this.preloadAdjacentImages();
     this.resetAutoPlay();
   }
 
   prevSlide(): void {
     this.currentIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+    this.preloadAdjacentImages();
     this.resetAutoPlay();
   }
 
   goToSlide(index: number): void {
     this.currentIndex = index;
+    this.preloadAdjacentImages();
     this.resetAutoPlay();
+  }
+  
+  // Preload images adjacent to current slide for smoother transitions
+  private preloadAdjacentImages(): void {
+    const nextIndex = (this.currentIndex + 1) % this.images.length;
+    const prevIndex = (this.currentIndex - 1 + this.images.length) % this.images.length;
+    
+    // Preload next and previous images if not already loaded
+    if (!this.images[nextIndex].loaded) {
+      this.preloadImage(nextIndex);
+    }
+    if (!this.images[prevIndex].loaded) {
+      this.preloadImage(prevIndex);
+    }
   }
 
   // Auto-play controls

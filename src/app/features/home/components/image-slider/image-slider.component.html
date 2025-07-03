@@ -16,13 +16,40 @@
       [attr.aria-hidden]="i !== currentIndex"
     >
       <div class="slide-content">
-        <img
-          [src]="image.src"
-          [alt]="image.alt"
-          (error)="handleImageError($event)"
-          loading="lazy"
-          class="slide-image"
-        />
+        <picture>
+          <!-- WebP format for modern browsers on mobile -->
+          <source
+            [srcset]="image.srcMobileWebp"
+            media="(max-width: 768px)"
+            type="image/webp"
+          />
+          <!-- JPEG fallback for mobile -->
+          <source
+            [srcset]="image.srcMobile"
+            media="(max-width: 768px)"
+            type="image/jpeg"
+          />
+          <!-- WebP format for modern browsers on desktop -->
+          <source
+            [srcset]="image.srcWebp"
+            media="(min-width: 769px)"
+            type="image/webp"
+          />
+          <!-- JPEG fallback for desktop -->
+          <source
+            [srcset]="image.src"
+            media="(min-width: 769px)"
+            type="image/jpeg"
+          />
+          <!-- Default fallback image -->
+          <img
+            [src]="image.src"
+            [alt]="image.alt"
+            (error)="handleImageError($event)"
+            loading="lazy"
+            class="slide-image"
+          />
+        </picture>
       </div>
     </div>
   </div>
