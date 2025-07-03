@@ -31,5 +31,5 @@ export class HomeComponent {
 Estamos listos para ser su aliado estratégico y construir juntos soluciones reales que impacten positivamente a las comunidades.`;
 
   origen: string = `home`;
-  imagen: string = `imagenes/alcantarillado-project.png`
+  imagen: string = `imagenes/alcantarillado-project.jpg`
 }

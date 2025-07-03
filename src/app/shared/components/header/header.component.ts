@@ -26,23 +26,23 @@ export class HeaderComponent implements OnInit, OnDestroy {
   // Sample images array with placeholder URLs (replace with your actual images when ready)
   images: SlideImage[] = [
     {
-      lowRes: 'imagenes/road-project.jpg', // Asumo que esta es la versión baja
-      highRes: 'imagenes/main-construction-project.png',
+      lowRes: 'imagenes/road-project.webp', // Asumo que esta es la versión baja
+      highRes: 'imagenes/main-construction-project.webp',
       alt: 'Main Construction Project - Large scale development'
     },
     {
-      lowRes: 'imagenes/construction-project.jpg',
-      highRes: 'imagenes/main-park-project.png',
+      lowRes: 'imagenes/construction-project.webp',
+      highRes: 'imagenes/main-park-project.webp',
       alt: 'Main Park Project - Urban green space development'
     },
     {
-      lowRes: 'imagenes/park-project.jpg',
-      highRes: 'imagenes/main-road-project.png',
+      lowRes: 'imagenes/park-project.webp',
+      highRes: 'imagenes/main-road-project.webp',
       alt: 'Main Road Project - Infrastructure development'
     },
     {
-      lowRes: 'imagenes/pipe-project.jpg',
-      highRes: 'imagenes/main-titulo-empresa.jpg',
+      lowRes: 'imagenes/pipe-project.webp',
+      highRes: 'imagenes/main-titulo-empresa.webp',
       alt: 'Pipe Project - Utility infrastructure'
     }
 
