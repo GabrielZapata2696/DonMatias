@@ -17,26 +17,27 @@ async function optimizeImage(inputPath, filename) {
   const jpegPath = path.join(outputDir, `${name}.jpg`);
   
   try {
-    // Create WebP version (best compression)
+    // Create high-quality WebP version (aggressively upscale for better display)
     await sharp(inputPath)
-      .resize(1920, 1080, { 
-        fit: 'inside', 
-        withoutEnlargement: true 
+      .resize(2560, 1440, { 
+        fit: 'fill', // Use 'fill' to stretch and upscale
+        withoutEnlargement: false // Allow enlargement
       })
+      .sharpen() // Add sharpening for upscaled images
       .webp({ 
-        quality: 85,
+        quality: 92,
         effort: 6 
       })
       .toFile(outputPath);
     
-    // Create JPEG version for fallback
+    // Create high-quality JPEG version for fallback
     await sharp(inputPath)
-      .resize(1920, 1080, { 
+      .resize(2560, 1440, { 
         fit: 'inside', 
         withoutEnlargement: true 
       })
       .jpeg({ 
-        quality: 85,
+        quality: 88,
         progressive: true 
       })
       .toFile(jpegPath);
@@ -46,23 +47,23 @@ async function optimizeImage(inputPath, filename) {
     const thumbJpegPath = path.join(outputDir, `${name}-thumb.jpg`);
     
     await sharp(inputPath)
-      .resize(800, 600, { 
+      .resize(1200, 900, { 
         fit: 'inside', 
         withoutEnlargement: true 
       })
       .webp({ 
-        quality: 80,
+        quality: 82,
         effort: 6 
       })
       .toFile(thumbWebpPath);
     
     await sharp(inputPath)
-      .resize(800, 600, { 
+      .resize(1200, 900, { 
         fit: 'inside', 
         withoutEnlargement: true 
       })
       .jpeg({ 
-        quality: 80,
+        quality: 82,
         progressive: true 
       })
       .toFile(thumbJpegPath);

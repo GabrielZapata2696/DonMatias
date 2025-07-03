@@ -2,9 +2,9 @@
 .slider-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/9;
-  max-height: calc(100vh - 100px);
-  min-height: var(--slider-min-height);
+  height: 70vh; /* Use viewport height instead of aspect ratio */
+  min-height: 500px; /* Larger minimum height */
+  max-height: 800px; /* Reasonable maximum */
   overflow: hidden;
   margin: 0 auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -14,7 +14,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px; /* Add padding to prevent images from touching edges */
+  padding: 0; /* Remove padding to allow full image display */
 }
 
 /* Responsive container adjustments */
@@ -86,22 +86,24 @@
   justify-content: center;
   align-items: center;
   position: relative;
-  overflow: visible; /* Change to visible to prevent cutting off */
+  overflow: hidden; /* Keep hidden to prevent overflow */
   background-color: #f0f0f0;
-  padding: 10px; /* Add padding to prevent images from touching edges */
+  padding: 0; /* Remove padding to allow full size images */
 }
 
 /* Image styling with performance optimizations */
 .slide-content img {
-  width: auto; /* Auto width for natural dimensions */
-  height: auto; /* Auto height for natural dimensions */
-  max-width: 95%; /* Prevent overflow while maintaining aspect ratio */
-  max-height: 95%; /* Ensure image fits within container with some margin */
-  object-fit: contain; /* Maintain aspect ratio */
+  width: 100%; /* Force full width */
+  height: 100%; /* Force full height */
+  max-width: none; /* Remove max-width restriction */
+  max-height: none; /* Remove max-height restriction */
+  object-fit: cover; /* Fill entire container */
   object-position: center;
-  margin: auto;
+  margin: 0;
   display: block;
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   will-change: transform; /* Performance optimization */
   transform: translateZ(0); /* Force hardware acceleration */
   backface-visibility: hidden; /* Improve performance */
