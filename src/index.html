@@ -30,6 +30,12 @@
       integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT"
       crossorigin="anonymous"
     />
+    
+    <!-- Critical image preloading for faster slider performance -->
+    <link rel="preload" as="image" href="imagenes/optimized/construction-project.webp" type="image/webp">
+    <link rel="preload" as="image" href="imagenes/optimized/construction-project.jpg" type="image/jpeg">
+    <link rel="preload" as="image" href="imagenes/optimized/construction-project-thumb.webp" type="image/webp" media="(max-width: 768px)">
+    <link rel="preload" as="image" href="imagenes/optimized/construction-project-thumb.jpg" type="image/jpeg" media="(max-width: 768px)">
   </head>
   <body class="mat-typography">
     <app-root></app-root>

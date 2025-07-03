@@ -103,8 +103,68 @@ export class ImageSliderComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit(): void {
+    // Mark first image as high priority and start loading immediately
+    this.loadCriticalImages();
     this.preloadImages();
     this.startAutoPlay();
+  }
+  
+  // Load critical images immediately for better UX
+  private loadCriticalImages(): void {
+    // Load first image immediately (critical)
+    this.aggressivePreloadImage(0);
+    
+    // Load second image shortly after
+    setTimeout(() => {
+      this.aggressivePreloadImage(1);
+    }, 100);
+    
+    // Load third image
+    setTimeout(() => {
+      this.aggressivePreloadImage(2);
+    }, 300);
+  }
+  
+  private aggressivePreloadImage(index: number): void {
+    if (index < 0 || index >= this.images.length) return;
+    
+    const image = this.images[index];
+    const isMobile = window.innerWidth <= 768;
+    
+    // Create multiple image objects for parallel loading
+    const imagesToLoad = [];
+    
+    if (isMobile) {
+      // Load mobile versions
+      const mobileWebp = new Image();
+      mobileWebp.src = image.srcMobileWebp;
+      imagesToLoad.push(mobileWebp);
+      
+      const mobileJpeg = new Image();
+      mobileJpeg.src = image.srcMobile;
+      imagesToLoad.push(mobileJpeg);
+    } else {
+      // Load desktop versions
+      const desktopWebp = new Image();
+      desktopWebp.src = image.srcWebp;
+      imagesToLoad.push(desktopWebp);
+      
+      const desktopJpeg = new Image();
+      desktopJpeg.src = image.src;
+      imagesToLoad.push(desktopJpeg);
+    }
+    
+    // Mark as loaded when any version loads
+    const markLoaded = () => {
+      this.images[index].loaded = true;
+    };
+    
+    imagesToLoad.forEach(img => {
+      img.onload = markLoaded;
+      img.onerror = () => {
+        console.warn(`Failed to load image ${index}:`, img.src);
+      };
+    });
   }
 
   // Enhanced preloading mechanism for smoother transitions
@@ -166,6 +226,10 @@ export class ImageSliderComponent implements OnInit, OnDestroy {
     this.currentIndex = (this.currentIndex + 1) % this.images.length;
     this.preloadAdjacentImages();
     this.resetAutoPlay();
+  }
+
+  onImageLoad(index: number): void {
+    this.images[index].loaded = true;
   }
 
   prevSlide(): void {

@@ -16,7 +16,13 @@
       [attr.aria-hidden]="i !== currentIndex"
     >
       <div class="slide-content">
-        <picture>
+        <!-- Loading skeleton for when image is not loaded -->
+        <div class="image-skeleton" *ngIf="!image.loaded" [class.hide]="image.loaded">
+          <div class="skeleton-animation"></div>
+          <div class="loading-text">Loading...</div>
+        </div>
+        
+        <picture [class.image-loaded]="image.loaded">
           <!-- WebP format for modern browsers on mobile -->
           <source
             [srcset]="image.srcMobileWebp"
@@ -46,8 +52,11 @@
             [src]="image.src"
             [alt]="image.alt"
             (error)="handleImageError($event)"
-            loading="lazy"
+            [attr.loading]="i === 0 ? 'eager' : 'lazy'"
+            [attr.fetchpriority]="i === 0 ? 'high' : 'auto'"
             class="slide-image"
+            (load)="onImageLoad(i)"
+            [class.loaded]="image.loaded"
           />
         </picture>
       </div>
