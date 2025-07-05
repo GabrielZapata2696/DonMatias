@@ -1,15 +1,18 @@
 <section class="company-story">
   <mat-card>
     <div class="story-content">
-      <div class="story-text align-self-center">
+      <div class="story-text">
         @if (origen === 'home') {
         <p class="h3">
-          Aliarse con el Fondo Mixto <br />
-          <strong class="nombre-empresa display-6"> D O N M A T Í A S </strong>
+          Aliarse con el Fondo Mixto
+          <br class="d-sm-block" />
+
+          <strong class="nombre-empresa"> D O N M A T Í A S </strong>
         </p>
 
         <p class="fs-5">
-          Es dar un paso seguro hacia el desarrollo <br />
+          Es dar un paso seguro hacia el desarrollo
+          <br class="d-none d-sm-block" />
           <strong>Eficiente, Transparente y con Impacto real</strong>.
         </p>
 
@@ -30,14 +33,44 @@
         }
       </div>
       <div class="story-image">
-        <div class="placeholder-image">
-          <source [srcset]="" media="(min-width: 720px)" />
-          <img
-            [src]="imagen"
-            class="imagen"
-            alt="Imagen dinámica"
-            loading="lazy"
-          />
+        <div
+          class="placeholder-image"
+          [class.loaded]="imageLoaded"
+          [class.error]="imageError"
+        >
+          <!-- Loading skeleton while image loads -->
+          <div class="image-skeleton" *ngIf="!imageLoaded && !imageError">
+            <div class="skeleton-animation"></div>
+            <div class="loading-text">Cargando imagen...</div>
+          </div>
+
+          <!-- Image container -->
+          <picture *ngIf="imagen">
+            <!-- WebP format for modern browsers -->
+            <source
+              [srcset]="getOptimizedImageSrc()"
+              type="image/webp"
+              *ngIf="isWebPFormat()"
+            />
+            <!-- Main image -->
+            <img
+              [src]="getOptimizedImageSrc()"
+              class="imagen"
+              [alt]="getAltText()"
+              loading="lazy"
+              decoding="async"
+              (error)="onImageError($event)"
+              (load)="onImageLoad($event)"
+              [class.loaded]="imageLoaded"
+              [class.error-state]="imageError"
+            />
+          </picture>
+
+          <!-- Fallback content when no image is provided -->
+          <div class="no-image-placeholder" *ngIf="!imagen">
+            <mat-icon>image</mat-icon>
+            <p>Imagen no disponible</p>
+          </div>
         </div>
       </div>
     </div>

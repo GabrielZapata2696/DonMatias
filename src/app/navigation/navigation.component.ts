@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
-interface NavRoute {
-  path: string;
-  label: string;
-  exact?: boolean;
-}
+import { NavRoute } from '../interfaces/main.interfaces';
 
 @Component({
   selector: 'app-navigation',
