@@ -1,92 +1,255 @@
-/* Company Story Section - Responsive Design */
+/* Professional Card Component - Image First Design */
 .company-story {
-  margin-bottom: 40px;
+  margin: 40px 0;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.story-content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  padding: 20px 40px;
-  align-items: center;
-}
-
-.story-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.story-text h2 {
-  color: #333;
-  font-size: 2rem;
-  margin-bottom: 20px;
-  font-weight: 600;
-}
-
-.story-text p {
-  color: #666;
-  line-height: 1.7;
-  margin-bottom: 20px;
-  font-size: 1rem;
-}
-
-.story-text .h3 {
-  color: #333;
-  font-size: 1.8rem;
-  margin-bottom: 15px;
-  line-height: 1.3;
-}
-
-.story-text .fs-5 {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 0;
-}
-
-.nombre-empresa {
-  color: #3f51b5;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.story-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.placeholder-image {
-  width: 100%;
-  height: auto;
-  background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #666;
-  border-radius: 8px;
-  min-height: 300px;
+.company-story .mat-mdc-card {
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  background: linear-gradient(145deg, #ffffff 0%, #fafafa 100%);
 }
 
-.placeholder-image:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+.company-story .mat-mdc-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
 }
 
-.placeholder-image img.imagen {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 8px;
-  transition: transform 0.3s ease;
+/* Desktop 2-column layout */
+@media (min-width: 769px) {
+  .story-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0;
+    gap: 0;
+    align-items: stretch;
+  }
+
+  /* Image Section - Left Column */
+  .story-image {
+    order: 1;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+  }
+
+  .placeholder-image {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .placeholder-image img.imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  .company-story .mat-mdc-card:hover .placeholder-image img.imagen {
+    transform: scale(1.08);
+  }
+
+  /* Text Section - Right Column */
+  .story-text {
+    order: 2;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #ffffff;
+    position: relative;
+  }
+
+  .story-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(135deg, #3f51b5 0%, #4ba2a3 75%, #c4f29b 100%);
+    border-radius: 0 2px 2px 0;
+  }
 }
 
-.placeholder-image:hover img.imagen {
-  transform: scale(1.05);
+/* Mobile single-column layout */
+@media (max-width: 768px) {
+  .story-content {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    gap: 0;
+  }
+
+  /* Image Section - First on mobile */
+  .story-image {
+    order: 1;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .placeholder-image {
+    width: 100%;
+    height: 240px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .placeholder-image img.imagen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  .company-story .mat-mdc-card:hover .placeholder-image img.imagen {
+    transform: scale(1.08);
+  }
+
+  /* Text Section - Second on mobile */
+  .story-text {
+    order: 2;
+    padding: 24px 28px 32px;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    position: relative;
+    text-align: center;
+  }
+
+  .story-text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 28px;
+    right: 28px;
+    height: 3px;
+    background: linear-gradient(90deg, #3f51b5 0%, #4ba2a3 75%, #c4f29b 100%);
+    border-radius: 0 0 2px 2px;
+  }
+}
+
+/* Text Styles - Desktop Override */
+@media (min-width: 769px) {
+  .story-text h2 {
+    color: #212529;
+    font-size: 2.2rem;
+    margin-bottom: 24px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .story-text .h3 {
+    color: #343a40;
+    font-size: 1.75rem;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+  }
+
+  .story-text p,
+  .story-text .fs-5 {
+    color: #495057;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    font-weight: 400;
+  }
+
+  .story-text .fs-5 {
+    font-size: 1.15rem;
+    color: #343a40;
+    margin-bottom: 0;
+    font-weight: 500;
+  }
+}
+
+/* Text Styles - Mobile Override */
+@media (max-width: 768px) {
+  .story-text h2 {
+    color: #212529;
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.3px;
+  }
+
+  .story-text .h3 {
+    color: #343a40;
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.2px;
+  }
+
+  .story-text p,
+  .story-text .fs-5 {
+    color: #495057;
+    line-height: 1.7;
+    margin-bottom: 16px;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+
+  .story-text .fs-5 {
+    font-size: 1rem;
+    color: #343a40;
+    margin-bottom: 0;
+    font-weight: 500;
+  }
+}
+
+/* Company Name Styles */
+.nombre-empresa {
+  background: linear-gradient(135deg, #3f51b5 0%, #4ba2a3 75%, #c4f29b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 1.1em;
+  position: relative;
+  display: inline-block;
+}
+
+.nombre-empresa::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3f51b5 0%, #4ba2a3 75%, #c4f29b 100%);
+  border-radius: 1px;
+  opacity: 0.3;
 }
 
 /* Image loading states */
@@ -181,135 +344,179 @@
 
 /* Tablet Styles */
 @media (max-width: 1024px) {
-  .story-content {
-    gap: 30px;
-    padding: 20px 30px;
+  .company-story {
+    margin: 30px 20px;
+  }
+
+  .story-text {
+    padding: 28px 32px 36px;
+  }
+
+  .story-text::before {
+    left: 32px;
+    right: 32px;
   }
 
   .story-text h2,
   .story-text .h3 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
   }
 
+  .story-text p,
   .story-text .fs-5 {
-    font-size: 1rem;
+    font-size: 1.05rem;
   }
 
   .placeholder-image {
-    min-height: 250px;
+    height: 280px;
   }
 }
 
 /* Mobile Landscape */
 @media (max-width: 768px) {
-  .story-content {
-    grid-template-columns: 1fr;
-    gap: 30px;
-    padding: 20px;
-    text-align: center;
+  .company-story {
+    margin: 20px 15px;
   }
 
   .story-text {
-    order: 1;
+    padding: 24px 28px 32px;
+    text-align: center;
   }
 
-  .story-image {
-    order: 2;
+  .story-text::before {
+    left: 28px;
+    right: 28px;
   }
 
   .story-text h2,
   .story-text .h3 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
+    font-size: 1.6rem;
+    margin-bottom: 18px;
   }
 
   .story-text p,
   .story-text .fs-5 {
-    font-size: 0.95rem;
-    margin-bottom: 15px;
+    font-size: 1rem;
+    margin-bottom: 16px;
   }
 
   .placeholder-image {
-    min-height: 200px;
-    max-width: 100%;
-    margin: 0 auto;
+    height: 240px;
   }
 
-  .company-story {
-    margin-bottom: 30px;
+  .nombre-empresa {
+    font-size: 1em;
+    letter-spacing: 1.2px;
   }
 }
 
 /* Mobile Portrait */
 @media (max-width: 480px) {
-  .story-content {
-    padding: 15px;
-    gap: 20px;
+  .company-story {
+    margin: 15px 10px;
+  }
+
+  .company-story .mat-mdc-card {
+    border-radius: 12px;
+  }
+
+  .story-text {
+    padding: 20px 24px 28px;
+  }
+
+  .story-text::before {
+    left: 24px;
+    right: 24px;
+    height: 2px;
   }
 
   .story-text h2,
   .story-text .h3 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     line-height: 1.2;
+    margin-bottom: 16px;
   }
 
   .story-text p,
   .story-text .fs-5 {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     line-height: 1.6;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
   }
 
   .placeholder-image {
-    min-height: 180px;
-    border-radius: 8px;
-  }
-
-  .placeholder-image img.imagen {
-    border-radius: 8px;
+    height: 200px;
   }
 
   .nombre-empresa {
-    font-size: 1.1rem;
-    letter-spacing: 0.5px;
+    font-size: 0.95em;
+    letter-spacing: 1px;
   }
 }
 
 /* Extra Small Devices */
 @media (max-width: 360px) {
-  .story-content {
-    padding: 10px;
-    gap: 15px;
+  .company-story {
+    margin: 10px 5px;
+  }
+
+  .story-text {
+    padding: 18px 20px 24px;
+  }
+
+  .story-text::before {
+    left: 20px;
+    right: 20px;
   }
 
   .story-text h2,
   .story-text .h3 {
-    font-size: 1.2rem;
+    font-size: 1.25rem;
+    margin-bottom: 14px;
   }
 
   .story-text p,
   .story-text .fs-5 {
-    font-size: 0.85rem;
-    margin-bottom: 10px;
+    font-size: 0.9rem;
+    margin-bottom: 12px;
   }
 
   .placeholder-image {
-    min-height: 150px;
+    height: 180px;
   }
 
-  .company-story {
-    margin-bottom: 20px;
+  .nombre-empresa {
+    font-size: 0.9em;
+    letter-spacing: 0.8px;
   }
 }
 
 /* Disable hover effects on touch devices */
 @media (hover: none) and (pointer: coarse) {
-  .placeholder-image:hover {
+  .company-story .mat-mdc-card:hover {
     transform: none;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
   }
 
-  .placeholder-image:hover img.imagen {
+  .company-story .mat-mdc-card:hover .placeholder-image img.imagen {
+    transform: none;
+  }
+}
+
+/* Focus states for accessibility */
+.company-story .mat-mdc-card:focus-within {
+  outline: 3px solid rgba(63, 81, 181, 0.3);
+  outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+  .company-story .mat-mdc-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+
+  .company-story .mat-mdc-card:hover {
     transform: none;
   }
 }
