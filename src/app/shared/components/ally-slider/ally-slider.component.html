@@ -1,0 +1,9 @@
+<div class="ally-slider-container">
+  <div class="slider-wrapper">
+    <div class="slider-track">
+      <div class="ally-item" *ngFor="let ally of duplicatedAllies">
+        <img [src]="ally" [alt]="getAllyName(ally)" class="ally-logo" />
+      </div>
+    </div>
+  </div>
+</div>

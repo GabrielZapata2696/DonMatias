@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CardImageComponent } from "../../../shared/components/card-image/card-image.component";
+import { AllySliderComponent } from "../../../shared/components/ally-slider/ally-slider.component";
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,8 @@ import { CardImageComponent } from "../../../shared/components/card-image/card-i
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    CardImageComponent
+    CardImageComponent,
+    AllySliderComponent
   ]
 })
 export class HomeComponent {

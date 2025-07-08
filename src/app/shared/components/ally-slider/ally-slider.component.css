@@ -1,0 +1,116 @@
+.ally-slider-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  margin: 0;
+  padding: 20px 0;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.slider-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.slider-header h2 {
+  font-size: 2rem;
+  color: #333;
+  margin: 0;
+  font-weight: 600;
+}
+
+.slider-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 120px;
+}
+
+.slider-track {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  animation: slide 30s infinite linear;
+  width: calc(200% + 30px); /* Accommodate duplicated items and gap */
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.ally-item {
+  flex: 0 0 auto;
+  width: 150px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.ally-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ally-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease;
+}
+
+.ally-item:hover .ally-logo {
+  filter: grayscale(0%);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .ally-item {
+    width: 120px;
+    height: 80px;
+  }
+
+  .slider-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .slider-wrapper {
+    height: 100px;
+  }
+
+  .slider-track {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ally-item {
+    width: 100px;
+    height: 70px;
+  }
+
+  .slider-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .slider-wrapper {
+    height: 90px;
+  }
+
+  .slider-track {
+    gap: 15px;
+  }
+}
