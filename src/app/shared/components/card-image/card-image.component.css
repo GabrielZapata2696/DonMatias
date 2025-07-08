@@ -92,7 +92,7 @@
     left: 0;
     bottom: 0;
     width: 4px;
-    background: linear-gradient(180deg, #3f51b5 0%, #5c6bc0 50%, #9c27b0 100%);
+    background: linear-gradient(180deg, #3f51b5 0%, #4ba2a3 75%, #c4f29b 100%);
     border-radius: 0 2px 2px 0;
   }
 }
@@ -156,7 +156,7 @@
     left: 28px;
     right: 28px;
     height: 3px;
-    background: linear-gradient(90deg, #3f51b5 0%, #5c6bc0 50%, #9c27b0 100%);
+    background: linear-gradient(90deg, #3f51b5 0%, #4ba2a3 75%, #c4f29b 100%);
     border-radius: 0 0 2px 2px;
   }
 }
@@ -237,7 +237,7 @@
 
 /* Company Name Styles */
 .nombre-empresa {
-  background: linear-gradient(135deg, #3f51b5 0%, #5c6bc0 50%, #9c27b0 100%);
+  background: linear-gradient(135deg, #3f51b5 0%, #4ba2a3 75%, #c4f29b 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -256,7 +256,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, #3f51b5 0%, #5c6bc0 50%, #9c27b0 100%);
+  background: linear-gradient(90deg, #3f51b5 0%, #4ba2a3 75%, #c4f29b 100%);
   border-radius: 1px;
   opacity: 0.3;
 }
