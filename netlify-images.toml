@@ -1,0 +1,57 @@
+# Netlify configuration for images site
+# Place this file in your external-images directory when deploying
+
+[build]
+  # No build process needed for static images
+  command = "echo 'No build required for static images'"
+  publish = "."
+
+[[headers]]
+  # Apply to all image files
+  for = "/*"
+  [headers.values]
+    # Enable CORS for cross-origin requests
+    Access-Control-Allow-Origin = "*"
+    Access-Control-Allow-Methods = "GET, HEAD, OPTIONS"
+    Access-Control-Allow-Headers = "Content-Type"
+    
+    # Cache images for 1 year (since they're content-hashed)
+    Cache-Control = "public, max-age=31536000, immutable"
+    
+    # Security headers
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  # Specific caching for WebP images
+  for = "/*.webp"
+  [headers.values]
+    Content-Type = "image/webp"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Specific caching for JPEG images
+  for = "/*.jpg"
+  [headers.values]
+    Content-Type = "image/jpeg"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Specific caching for PNG images
+  for = "/*.png"
+  [headers.values]
+    Content-Type = "image/png"
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Redirect rules (optional)
+[[redirects]]
+  from = "/imagenes/*"
+  to = "/:splat"
+  status = 301
+  force = true
+
+# Edge functions or custom processing (if needed in the future)
+# [[edge_functions]]
+#   path = "/optimize/*"
+#   function = "image-optimizer"

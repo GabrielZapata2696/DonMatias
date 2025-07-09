@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { PromotionalCardComponent } from '../../../shared/components/promotional-card/promotional-card.component';
 
 @Component({
   selector: 'app-services',
@@ -15,7 +16,8 @@ import { MatIconModule } from '@angular/material/icon';
     RouterModule,
     MatCardModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    PromotionalCardComponent
   ]
 })
 export class ServicesComponent {

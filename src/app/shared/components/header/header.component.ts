@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { interval, Subscription } from 'rxjs';
+import { ImageService } from '../../services/image.service';
 
 interface SlideImage {
   highRes: string;
@@ -20,33 +21,13 @@ interface SlideImage {
 export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('sliderContainer') sliderContainer!: ElementRef;
 
-  // Fallback image for error handling - using direct image URL
-  fallbackImageUrl = 'https://placehold.co/1600x900/cccccc/666666?text=Image+Not+Available';
+  // Sample images array - now using ImageService for URL generation
+  images: SlideImage[] = [];
 
-  // Sample images array with placeholder URLs (replace with your actual images when ready)
-  images: SlideImage[] = [
-    {
-      lowRes: 'imagenes/road-project.webp', // Asumo que esta es la versión baja
-      highRes: 'imagenes/main-construction-project.webp',
-      alt: 'Main Construction Project - Large scale development'
-    },
-    {
-      lowRes: 'imagenes/construction-project.webp',
-      highRes: 'imagenes/main-park-project.webp',
-      alt: 'Main Park Project - Urban green space development'
-    },
-    {
-      lowRes: 'imagenes/park-project.webp',
-      highRes: 'imagenes/main-road-project.webp',
-      alt: 'Main Road Project - Infrastructure development'
-    },
-    {
-      lowRes: 'imagenes/pipe-project.webp',
-      highRes: 'imagenes/main-titulo-empresa.webp',
-      alt: 'Pipe Project - Utility infrastructure'
-    }
-
-  ];
+  // Fallback image for error handling
+  get fallbackImageUrl(): string {
+    return this.imageService.getFallbackImageUrl();
+  }
 
 
   currentIndex = 0;
@@ -62,11 +43,36 @@ export class HeaderComponent implements OnInit, OnDestroy {
   // For cleanup
   private autoPlaySubscription?: Subscription;
 
-  constructor() { }
+  constructor(private imageService: ImageService) { }
 
   ngOnInit(): void {
-    //  this.preloadImages();
+    this.initializeImages();
     this.startAutoPlay();
+  }
+
+  private initializeImages(): void {
+    this.images = [
+      {
+        lowRes: this.imageService.getImageUrl('road-project.webp'),
+        highRes: this.imageService.getImageUrl('main-construction-project.webp'),
+        alt: 'Main Construction Project - Large scale development'
+      },
+      {
+        lowRes: this.imageService.getImageUrl('construction-project.webp'),
+        highRes: this.imageService.getImageUrl('main-park-project.webp'),
+        alt: 'Main Park Project - Urban green space development'
+      },
+      {
+        lowRes: this.imageService.getImageUrl('park-project.webp'),
+        highRes: this.imageService.getImageUrl('main-road-project.webp'),
+        alt: 'Main Road Project - Infrastructure development'
+      },
+      {
+        lowRes: this.imageService.getImageUrl('pipe-project.webp'),
+        highRes: this.imageService.getImageUrl('main-titulo-empresa.webp'),
+        alt: 'Pipe Project - Utility infrastructure'
+      }
+    ];
   }
 
   // Add preloading mechanism for smoother transitions

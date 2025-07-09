@@ -6,6 +6,7 @@
   z-index: 1000;
   padding: 0 20px;
   height: 70px; /* Keep fixed height for navigation */
+  transition: all 0.3s ease;
 }
 
 .nav-container {
@@ -133,8 +134,17 @@
   }
 }
 
-/* Desktop Navigation */
+/* Desktop Navigation - Fixed position for PC viewports */
 @media (min-width: 1025px) {
+  .navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+  
   .nav-links {
     height: auto; /* Default height for desktop */
   }

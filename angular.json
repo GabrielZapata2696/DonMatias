@@ -25,7 +25,13 @@
               {
                 "glob": "**/*",
                 "input": "public",
-                "output": ""
+                "output": "",
+                "ignore": ["imagenes/**/*"]
+              },
+              {
+                "glob": "**/*",
+                "input": "external-images",
+                "output": "external-images"
               }
             ],
             "styles": [
@@ -41,6 +47,14 @@
           },
           "configurations": {
             "production": {
+              "assets": [
+                {
+                  "glob": "**/*",
+                  "input": "public",
+                  "output": "",
+                  "ignore": ["imagenes/**/*"]
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",

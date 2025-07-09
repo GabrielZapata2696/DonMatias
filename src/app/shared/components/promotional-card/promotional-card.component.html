@@ -1,0 +1,91 @@
+<div class="promotional-card-container" [@slideInFade]="animationState">
+  <mat-card
+    class="promotional-card"
+    tabindex="0"
+    role="article"
+    aria-labelledby="card-title"
+  >
+    <!-- Header Section -->
+    <mat-card-header class="card-header">
+      <mat-icon mat-card-avatar class="header-icon" aria-hidden="true"
+        >handshake</mat-icon
+      >
+      <mat-card-title id="card-title" class="card-title">
+        Contratación Estatal y Privada
+      </mat-card-title>
+      <mat-card-subtitle class="card-subtitle">
+        Su aliado estratégico en proyectos de inversión
+      </mat-card-subtitle>
+    </mat-card-header>
+
+    <!-- Content Section -->
+    <mat-card-content class="card-content">
+      <div class="main-text">
+        <p class="promotional-text">
+          Nuestro fondo es el <strong>aliado ideal</strong> para celebrar
+          contratación estatal y privada. Ofrecemos <strong>asesoría</strong>,
+          <strong>consultoría</strong> y <strong>apoyo</strong> en la
+          estructuración de proyectos con <strong>eficiencia</strong>,
+          <strong>legalidad</strong> y <strong>resultados</strong>. Nuestra
+          experiencia nos respalda en la gestión de <strong>regalías</strong>,
+          <strong>obras por impuestos</strong> y todo tipo de
+          <strong>convenios</strong>. Con nosotros, su inversión está en manos
+          seguras.
+        </p>
+      </div>
+
+      <!-- Services List -->
+      <div class="services-list" role="list" aria-label="Lista de servicios">
+        <div class="services-title">
+          <mat-icon class="services-icon" aria-hidden="true">star</mat-icon>
+          <h3>Nuestros Servicios Principales</h3>
+        </div>
+        <div class="services-grid">
+          <div
+            class="service-item"
+            *ngFor="let service of services; trackBy: trackByService"
+            role="listitem"
+          >
+            <mat-icon class="service-icon" [attr.aria-label]="service.title">{{
+              service.icon
+            }}</mat-icon>
+            <div class="service-content">
+              <h4 class="service-title">{{ service.title }}</h4>
+              <p class="service-description">{{ service.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Highlighted Phrase -->
+      <div class="highlighted-phrase">
+        <mat-icon class="security-icon" aria-hidden="true">security</mat-icon>
+        <span class="security-text"
+          >Con nosotros, su inversión está en manos seguras</span
+        >
+      </div>
+    </mat-card-content>
+
+    <!-- Actions Section -->
+    <mat-card-actions class="card-actions" align="end">
+      <button 
+        class="btn primary"
+        (click)="navigateToContact()"
+        aria-label="Ir a la página de contacto"
+        type="button"
+      >
+        <mat-icon aria-hidden="true">contact_support</mat-icon>
+        Contáctenos
+      </button>
+      <button 
+        class="btn secondary"
+        (click)="openEmail()"
+        aria-label="Contactar por Email"
+        type="button"
+      >
+        <mat-icon aria-hidden="true">email</mat-icon>
+        Email
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

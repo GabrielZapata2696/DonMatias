@@ -5,11 +5,13 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "deploy:images": "node deploy-images.js",
     "watch": "ng build --watch --configuration development",
     "serve:ssr:brochure": "node dist/brochure/server/server.mjs"
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^19.2.14",
     "@angular/cdk": "^19.2.15",
     "@angular/common": "^19.2.0",
     "@angular/compiler": "^19.2.0",

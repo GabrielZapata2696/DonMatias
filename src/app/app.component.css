@@ -9,7 +9,13 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  overflow-x: hidden; /* Prevent horizontal scrolling from slider */
+}
+
+/* Add top margin for fixed navigation on desktop */
+@media (min-width: 1025px) {
+  .app-container {
+    margin-top: 70px; /* Height of the fixed navigation */
+  }
 }
 
 /* Navigation spacing */

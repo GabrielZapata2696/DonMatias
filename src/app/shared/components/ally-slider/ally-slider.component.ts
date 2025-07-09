@@ -1,41 +1,45 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ImageService } from '../../services/image.service';
 
 @Component({
   selector: 'app-ally-slider',
   templateUrl: './ally-slider.component.html',
-  styleUrls: ['./ally-slider.component.css'],
+  styleUrls: [ './ally-slider.component.css' ],
   standalone: true,
-  imports: [CommonModule]
+  imports: [ CommonModule ]
 })
 export class AllySliderComponent implements OnInit, OnDestroy {
+
+  allies: string[] = [];
   
-  allies: string[] = [
-    'imagenes/empresas_aliadas/Escudo_Donmatias.jpg',
-    'imagenes/empresas_aliadas/Escudo_Ebejico.png',
-    'imagenes/empresas_aliadas/Escudo_Entrerrios.png',
-    'imagenes/empresas_aliadas/Escudo_Guadalupe.png',
-    'imagenes/empresas_aliadas/Escudo_Jardin.jpg',
-    'imagenes/empresas_aliadas/Escudo_Remedios.jpg',
-    'imagenes/empresas_aliadas/Escudo_San_Pedro.jpg',
-    'imagenes/empresas_aliadas/Escudo_Santa_Barbara.png',
-    'imagenes/empresas_aliadas/Logo_Bioexplora_sas.png',
-    'imagenes/empresas_aliadas/Logo_Fovis.jpg',
-    'imagenes/empresas_aliadas/Logo_Gobernacion_Antioquia.jpg',
-    'imagenes/empresas_aliadas/acuatubos_s_a_s_logo.jpg',
-    'imagenes/empresas_aliadas/escudo-Fredonia.png',
-    'imagenes/empresas_aliadas/escudo_Anza.png',
-    'imagenes/empresas_aliadas/escudo_Barbosa.png',
-    'imagenes/empresas_aliadas/escudo_Gomez_Plata.png'
-  ];
+  constructor(private imageService: ImageService) {}
 
   // Duplicate the array to create seamless loop
   get duplicatedAllies(): string[] {
-    return [...this.allies, ...this.allies];
+    return [ ...this.allies, ...this.allies ];
   }
 
   ngOnInit() {
-    // No need for interval, CSS animation handles the sliding
+    // Initialize allies array with ImageService URLs
+    this.allies = [
+      this.imageService.getAllyImage('Escudo_Donmatias.jpg'),
+      this.imageService.getAllyImage('Escudo_Ebejico.jpg'),
+      this.imageService.getAllyImage('Escudo_Entrerrios.jpg'),
+      this.imageService.getAllyImage('Escudo_Guadalupe.jpg'),
+      this.imageService.getAllyImage('Escudo_Jardin.jpg'),
+      this.imageService.getAllyImage('Escudo_Remedios.jpg'),
+      this.imageService.getAllyImage('Escudo_San_Pedro.jpg'),
+      this.imageService.getAllyImage('Escudo_Santa_Barbara.jpg'),
+      this.imageService.getAllyImage('Logo_Bioexplora_sas.jpg'),
+      this.imageService.getAllyImage('Logo_Fovis.jpg'),
+      this.imageService.getAllyImage('Logo_Gobernacion_Antioquia.jpg'),
+      this.imageService.getAllyImage('acuatubos_s_a_s_logo.jpg'),
+      this.imageService.getAllyImage('escudo-Fredonia.jpg'),
+      this.imageService.getAllyImage('escudo_Anza.jpg'),
+      this.imageService.getAllyImage('escudo_Barbosa.jpg'),
+      this.imageService.getAllyImage('escudo_Gomez_Plata.jpg')
+    ];
   }
 
   ngOnDestroy() {
@@ -44,6 +48,6 @@ export class AllySliderComponent implements OnInit, OnDestroy {
 
   getAllyName(imagePath: string): string {
     const fileName = imagePath.split('/').pop() || '';
-    return fileName.split('.')[0].replace(/_/g, ' ');
+    return fileName.split('.')[ 0 ].replace(/_/g, ' ');
   }
 }

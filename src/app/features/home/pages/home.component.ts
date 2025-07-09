@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CardImageComponent } from "../../../shared/components/card-image/card-image.component";
 import { AllySliderComponent } from "../../../shared/components/ally-slider/ally-slider.component";
+import { ImageService } from '../../../shared/services/image.service';
 
 @Component({
   selector: 'app-home',
@@ -33,5 +34,10 @@ export class HomeComponent {
 Estamos listos para ser su aliado estratégico y construir juntos soluciones reales que impacten positivamente a las comunidades.`;
 
   origen: string = `home`;
-  imagen: string = `imagenes/alcantarillado-project.webp`
+  imagen: string = '';
+  
+  constructor(private imageService: ImageService) {
+    // Initialize image URL using ImageService
+    this.imagen = this.imageService.getImageUrl('alcantarillado-project.webp');
+  }
 }

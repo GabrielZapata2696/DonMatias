@@ -1,26 +1,28 @@
 <div class="services-container">
   <header class="services-header">
     <h1>Nuestros Servicios</h1>
-    <p>Descubra nuestra gama completa de servicios profesionales diseñados para ayudar a su negocio a crecer</p>
+
+    <!-- Promotional Card -->
+    <app-promotional-card></app-promotional-card>
   </header>
 
   <div class="services-grid">
     <mat-card class="service-card" *ngFor="let service of services">
       <mat-card-header>
-        <mat-icon mat-card-avatar>{{service.icon}}</mat-icon>
-        <mat-card-title>{{service.title}}</mat-card-title>
+        <mat-icon mat-card-avatar>{{ service.icon }}</mat-icon>
+        <mat-card-title>{{ service.title }}</mat-card-title>
       </mat-card-header>
-      
+
       <mat-card-content>
-        <p class="service-description">{{service.description}}</p>
+        <p class="service-description">{{ service.description }}</p>
         <ul class="service-features">
           <li *ngFor="let feature of service.features">
             <mat-icon>check_circle</mat-icon>
-            <span>{{feature}}</span>
+            <span>{{ feature }}</span>
           </li>
         </ul>
       </mat-card-content>
-      
+
       <mat-card-actions>
         <button mat-raised-button color="primary">
           <mat-icon>arrow_forward</mat-icon>
