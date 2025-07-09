@@ -43,6 +43,7 @@ Thumbs.db
 
 # External images (excluded from build, served from separate deployment)
 /external-images
+/public
 
 # Original images in public folder (can be removed after migration)
 /public/imagenes
