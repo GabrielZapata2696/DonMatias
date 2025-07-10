@@ -1,7 +1,7 @@
 # Netlify configuration for main Angular app
 [build]
   command = "ng build --configuration production"
-  publish = "dist/brochure"
+  publish = "dist/brochure/browser"
 
 # Redirect all routes to index.html for Angular routing
 [[redirects]]

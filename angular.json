@@ -39,11 +39,6 @@
               "src/styles.css"
             ],
             "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "src/server.ts"
-            }
           },
           "configurations": {
             "production": {
@@ -68,15 +63,11 @@
                 }
               ],
               "outputHashing": "all",
-              "prerender": false,
-              "ssr": false
             },
                     "development": {
                       "optimization": false,
                       "extractLicenses": false,
-                      "sourceMap": true,
-                      "prerender": false,
-                      "ssr": false
+                      "sourceMap": true
                     }
           },
           "defaultConfiguration": "production"
