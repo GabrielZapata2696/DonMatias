@@ -23,7 +23,6 @@
   }
 }
 
-// Header Section
 .card-header {
   background: linear-gradient(135deg, #3f51b5 0%, #4ba2a3 75%, #c4f29b 100%);
   color: white;
@@ -32,7 +31,6 @@
   
   .header-icon {
     background: rgba(255, 255, 255, 0.2);
-    color: white;
     font-size: 2rem;
     width: 3rem;
     height: 3rem;
@@ -308,33 +306,14 @@
   }
 }
 
-// Accessibility improvements
+// Accessibility
 @media (prefers-reduced-motion: reduce) {
-  .promotional-card,
-  .service-item,
-  .btn {
-    transition: none;
-  }
-  
-  .promotional-card:hover,
-  .service-item:hover,
-  .btn:hover {
-    transform: none;
-  }
+  * { transition: none !important; }
+  *:hover { transform: none !important; }
 }
 
-// High contrast mode
 @media (prefers-contrast: high) {
-  .promotional-card {
-    border: 2px solid #000;
-  }
-  
-  .card-header {
-    background: #000;
-    color: #fff;
-  }
-  
-  .service-item {
-    border-color: #000;
-  }
+  .promotional-card { border: 2px solid #000; }
+  .card-header { background: #000; color: #fff; }
+  .service-item { border-color: #000; }
 }

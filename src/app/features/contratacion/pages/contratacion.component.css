@@ -1,23 +1,8 @@
+/* Using global .page-container and .page-header classes but narrower width */
 .contratacion-container {
   max-width: 800px;
   margin: 15px auto;
   padding: 0 20px;
-}
-
-.contratacion-header {
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-.contratacion-header h1 {
-  font-size: 2.5rem;
-  color: #333;
-  margin-bottom: 16px;
-}
-
-.contratacion-header p {
-  font-size: 1.2rem;
-  color: #666;
 }
 
 mat-accordion {

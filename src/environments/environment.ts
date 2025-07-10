@@ -1,8 +1,6 @@
 export const environment = {
   production: false,
-  // For development: serve images from local external-images directory
-  // For production: replace with your Netlify static deploy URL
-  imageBaseUrl: '/external-images',
-  // Alternative for production (example):
-  // imageBaseUrl: 'https://your-netlify-site.netlify.app/images',
+  // Using Netlify images URL for both development and production
+  // This ensures images work consistently across environments
+  imageBaseUrl: 'https://donmatias-external-images.netlify.app',
 };
