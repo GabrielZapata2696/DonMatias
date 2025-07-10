@@ -8,7 +8,18 @@
   height: 70px; /* Keep fixed height for navigation */
   transition: all 0.3s ease;
 }
-
+.nombre-empresa {
+  background: linear-gradient(135deg, #3f51b5 0%, #4ba2a3 75%, #c4f29b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-size: 1.1em;
+  position: relative;
+  display: inline-block;
+}
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -144,7 +155,7 @@
     width: 100%;
     z-index: 1000;
   }
-  
+
   .nav-links {
     height: auto; /* Default height for desktop */
   }

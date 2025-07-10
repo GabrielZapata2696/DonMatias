@@ -3,19 +3,19 @@
   justify-content: center;
   padding: 1rem;
   margin: 2rem 0;
-  
+
   .promotional-card {
     max-width: 800px;
     width: 100%;
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
+
     &:hover {
       transform: translateY(-4px);
       box-shadow: 0 16px 32px rgba(0, 0, 0, 0.16);
     }
-    
+
     &:focus-within {
       outline: 2px solid #3f51b5;
       outline-offset: 2px;
@@ -28,7 +28,7 @@
   color: white;
   border-radius: 16px 16px 0 0;
   padding: 1.5rem;
-  
+
   .header-icon {
     background: rgba(255, 255, 255, 0.2);
     font-size: 2rem;
@@ -40,56 +40,57 @@
     border-radius: 50%;
     backdrop-filter: blur(10px);
   }
-  
+
   .card-title {
     font-size: 1.75rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
     line-height: 1.2;
   }
-  
+
   .card-subtitle {
     font-size: 1.1rem;
     opacity: 0.9;
     font-weight: 300;
+    color: white;
   }
 }
 
 // Content Section
 .card-content {
   padding: 2rem;
-  
+
   .main-text {
     margin-bottom: 2rem;
-    
+
     .promotional-text {
       font-size: 1.1rem;
       line-height: 1.6;
       color: #424242;
       margin: 0;
       text-align: justify;
-      
+
       strong {
         color: #1976d2;
         font-weight: 600;
       }
     }
   }
-  
+
   .services-list {
     margin-bottom: 2rem;
-    
+
     .services-title {
       display: flex;
       align-items: center;
       margin-bottom: 1.5rem;
-      
+
       .services-icon {
         color: #ff9800;
         margin-right: 0.5rem;
         font-size: 1.5rem;
       }
-      
+
       h3 {
         margin: 0;
         font-size: 1.3rem;
@@ -97,12 +98,12 @@
         color: #333;
       }
     }
-    
+
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1.5rem;
-      
+
       .service-item {
         display: flex;
         align-items: flex-start;
@@ -111,13 +112,13 @@
         background: #f8f9fa;
         border: 1px solid #e9ecef;
         transition: all 0.3s ease;
-        
+
         &:hover {
           background: #e3f2fd;
           border-color: #2196f3;
           transform: translateY(-2px);
         }
-        
+
         .service-icon {
           color: #2196f3;
           margin-right: 1rem;
@@ -125,17 +126,17 @@
           flex-shrink: 0;
           margin-top: 0.25rem;
         }
-        
+
         .service-content {
           flex: 1;
-          
+
           .service-title {
             font-size: 1rem;
             font-weight: 600;
             color: #333;
             margin: 0 0 0.5rem 0;
           }
-          
+
           .service-description {
             font-size: 0.9rem;
             color: #666;
@@ -146,7 +147,7 @@
       }
     }
   }
-  
+
   .highlighted-phrase {
     display: flex;
     align-items: center;
@@ -155,13 +156,13 @@
     background: linear-gradient(135deg, #3f51b5 0%, #4ba2a3 75%, #c4f29b 100%);
     border-radius: 12px;
     margin-bottom: 1rem;
-    
+
     .security-icon {
       color: white;
       margin-right: 0.5rem;
       font-size: 1.5rem;
     }
-    
+
     .security-text {
       color: white;
       font-size: 1.1rem;
@@ -177,7 +178,7 @@
   display: flex;
   gap: 1rem;
   justify-content: flex-end;
-  
+
   .btn {
     display: inline-flex;
     align-items: center;
@@ -191,32 +192,32 @@
     border: none;
     font-size: 1rem;
     min-width: 120px;
-    
+
     mat-icon {
       margin-right: 0.5rem;
       font-size: 1.2rem;
     }
-    
+
     &:hover {
       transform: translateY(-2px);
     }
   }
-  
+
   .btn.primary {
     background-color: white;
     color: #3f51b5;
     border: 2px solid #3f51b5;
-    
+
     &:hover {
       background-color: #f0f0f0;
     }
   }
-  
+
   .btn.secondary {
     border: 2px solid #3f51b5;
     color: #3f51b5;
     background-color: transparent;
-    
+
     &:hover {
       background-color: rgba(63, 81, 181, 0.1);
     }
@@ -229,42 +230,42 @@
     padding: 0.5rem;
     margin: 1rem 0;
   }
-  
+
   .card-header {
     padding: 1rem;
-    
+
     .card-title {
       font-size: 1.4rem;
     }
-    
+
     .card-subtitle {
       font-size: 1rem;
     }
   }
-  
+
   .card-content {
     padding: 1.5rem;
-    
+
     .main-text .promotional-text {
       font-size: 1rem;
       text-align: left;
     }
-    
+
     .services-list .services-grid {
       grid-template-columns: 1fr;
       gap: 1rem;
-      
+
       .service-item {
         padding: 0.75rem;
       }
     }
   }
-  
+
   .card-actions {
     padding: 1rem 1.5rem 1.5rem;
     flex-direction: column;
     align-items: stretch;
-    
+
     .btn {
       min-width: auto;
       margin-bottom: 0.5rem;
@@ -279,26 +280,26 @@
       height: 2.5rem;
       font-size: 1.5rem;
     }
-    
+
     .card-title {
       font-size: 1.2rem;
     }
-    
+
     .card-subtitle {
       font-size: 0.9rem;
     }
   }
-  
+
   .card-content {
     padding: 1rem;
-    
+
     .services-list .services-title h3 {
       font-size: 1.1rem;
     }
-    
+
     .highlighted-phrase {
       padding: 0.75rem;
-      
+
       .security-text {
         font-size: 1rem;
       }
@@ -308,12 +309,23 @@
 
 // Accessibility
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; }
-  *:hover { transform: none !important; }
+  * {
+    transition: none !important;
+  }
+  *:hover {
+    transform: none !important;
+  }
 }
 
 @media (prefers-contrast: high) {
-  .promotional-card { border: 2px solid #000; }
-  .card-header { background: #000; color: #fff; }
-  .service-item { border-color: #000; }
+  .promotional-card {
+    border: 2px solid #000;
+  }
+  .card-header {
+    background: #000;
+    color: #fff;
+  }
+  .service-item {
+    border-color: #000;
+  }
 }

@@ -7,6 +7,10 @@ mat-card-header {
   margin-bottom: 20px;
 }
 
+.services-header h1 {
+  text-align: center;
+}
+
 mat-card-header mat-icon {
   font-size: 2rem;
   height: 2rem;
