@@ -1,11 +1,11 @@
 .promotional-card-container {
   display: flex;
   justify-content: center;
-  padding: 1rem;
-  margin: 2rem 0;
+  padding: 0;
+  margin: 0;
 
   .promotional-card {
-    max-width: 800px;
+    max-width: 100%;
     width: 100%;
     border-radius: 16px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);

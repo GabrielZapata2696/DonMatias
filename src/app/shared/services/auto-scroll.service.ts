@@ -18,7 +18,7 @@ export class AutoScrollService {
     // Listen for successful navigation events
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe((event: NavigationEnd) => {
+      .subscribe(() => {
         // Small delay to ensure the component is loaded
         setTimeout(() => {
           if (this.isHomePage()) {
@@ -65,7 +65,7 @@ export class AutoScrollService {
           behavior: 'smooth'
         });
       }
-    } catch (error) {
+    } catch {
       // Fallback: scroll to just after navigation
       window.scrollTo({
         top: this.NAVIGATION_HEIGHT,

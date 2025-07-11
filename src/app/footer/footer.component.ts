@@ -16,8 +16,8 @@ export class FooterComponent {
   value = 0;
   bufferValue = 75;
 
-  nombreEmpresa: string = 'D O N M A T Í A S';
-  nombreEmpresa2: string = 'Empresa de Desarrollo Territorial'
+  nombreEmpresa = 'D O N M A T Í A S';
+  nombreEmpresa2 = 'Empresa de Desarrollo Territorial'
 
   currentDate = new Date();
 

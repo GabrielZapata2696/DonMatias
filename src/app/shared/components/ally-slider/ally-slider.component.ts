@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ImageService } from '../../services/image.service';
 
@@ -9,7 +9,7 @@ import { ImageService } from '../../services/image.service';
   standalone: true,
   imports: [ CommonModule ]
 })
-export class AllySliderComponent implements OnInit, OnDestroy {
+export class AllySliderComponent implements OnInit {
 
   allies: string[] = [];
   
@@ -42,9 +42,6 @@ export class AllySliderComponent implements OnInit, OnDestroy {
     ];
   }
 
-  ngOnDestroy() {
-    // No cleanup needed since we're using CSS animation
-  }
 
   getAllyName(imagePath: string): string {
     const fileName = imagePath.split('/').pop() || '';

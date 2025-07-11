@@ -5,11 +5,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { PromotionalCardComponent } from '../../../shared/components/promotional-card/promotional-card.component';
+import { ServiceGridComponent } from '../../../shared/components/service-grid/service-grid.component';
 
 @Component({
   selector: 'app-services',
   templateUrl: './services.component.html',
-  styleUrls: ['./services.component.css'],
+  styleUrls: [ './services.component.css' ],
   standalone: true,
   imports: [
     CommonModule,
@@ -17,7 +18,8 @@ import { PromotionalCardComponent } from '../../../shared/components/promotional
     MatCardModule,
     MatButtonModule,
     MatIconModule,
-    PromotionalCardComponent
+    PromotionalCardComponent,
+    ServiceGridComponent
   ]
 })
 export class ServicesComponent {

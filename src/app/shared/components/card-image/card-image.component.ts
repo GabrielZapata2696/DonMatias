@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'card-image',
+  selector: 'app-card-image',
   imports: [
     CommonModule,
     MatCardModule,
@@ -14,14 +14,14 @@ import { CommonModule } from '@angular/common';
   styleUrl: './card-image.component.css'
 })
 export class CardImageComponent {
-  @Input() origen: string = '';
-  @Input() imagen: string = '';
-  @Input() titulo: string = '';
+  @Input() origen = '';
+  @Input() imagen = '';
+  @Input() titulo = '';
 
   // Image loading state management
-  imageLoaded: boolean = false;
-  imageError: boolean = false;
-  fallbackImage: string = 'https://placehold.co/600x400/e0e0e0/666666?text=Imagen+No+Disponible';
+  imageLoaded = false;
+  imageError = false;
+  fallbackImage = 'https://placehold.co/600x400/e0e0e0/666666?text=Imagen+No+Disponible';
 
   /**
    * Handle image loading success

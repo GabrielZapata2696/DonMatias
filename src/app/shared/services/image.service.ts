@@ -7,7 +7,6 @@ import { environment } from '../../../environments/environment';
 export class ImageService {
   private readonly baseUrl = environment.imageBaseUrl;
 
-  constructor() { }
 
   /**
    * Get full URL for an image
@@ -32,7 +31,7 @@ export class ImageService {
    * @param extension - Image extension (default: 'webp')
    * @returns Full URL to the image
    */
-  getMainProjectImage(imageName: string, extension: string = 'webp'): string {
+  getMainProjectImage(imageName: string, extension = 'webp'): string {
     return this.getImageUrl(`${imageName}.${extension}`);
   }
 
@@ -60,7 +59,7 @@ export class ImageService {
    * @param extension - Image extension (default: 'webp')
    * @returns Object with URLs for different sizes
    */
-  getResponsiveImages(baseName: string, extension: string = 'webp') {
+  getResponsiveImages(baseName: string, extension = 'webp') {
     return {
       full: this.getImageUrl(`${baseName}.${extension}`),
       thumb: this.getOptimizedImage(`${baseName}-thumb.${extension}`),

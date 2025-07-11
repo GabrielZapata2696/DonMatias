@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FooterComponent } from './footer/footer.component';
@@ -12,12 +12,9 @@ import { AutoScrollService } from './shared/services/auto-scroll.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'brochure';
 
   constructor(private autoScrollService: AutoScrollService) {}
 
-  ngOnInit(): void {
-    // Auto-scroll service is automatically initialized in constructor
-  }
 }

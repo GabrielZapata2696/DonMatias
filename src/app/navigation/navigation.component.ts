@@ -12,7 +12,7 @@ import { NavRoute } from '../interfaces/main.interfaces';
 })
 export class NavigationComponent {
   isMenuOpen = false;
-  nombreEmpresa: string = 'D O N M A T Í A S';
+  nombreEmpresa = 'D O N M A T Í A S';
 
   routes: NavRoute[] = [
     { path: '', label: 'Inicio', exact: true },

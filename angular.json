@@ -26,7 +26,9 @@
                 "glob": "**/*",
                 "input": "public",
                 "output": "",
-                "ignore": ["imagenes/**/*"]
+                "ignore": [
+                  "imagenes/**/*"
+                ]
               },
               {
                 "glob": "**/*",
@@ -47,28 +49,30 @@
                   "glob": "**/*",
                   "input": "public",
                   "output": "",
-                  "ignore": ["imagenes/**/*"]
+                  "ignore": [
+                    "imagenes/**/*"
+                  ]
                 }
               ],
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
+                  "maximumWarning": "600kB",
                   "maximumError": "1MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "5kB",
-                  "maximumError": "10kB"
+                  "maximumWarning": "10kB",
+                  "maximumError": "20kB"
                 }
               ],
               "outputHashing": "all"
             },
-                    "development": {
-                      "optimization": false,
-                      "extractLicenses": false,
-                      "sourceMap": true
-                    }
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
           },
           "defaultConfiguration": "production"
         },
@@ -86,8 +90,22 @@
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
+  },
+  "cli": {
+    "schematicCollections": [
+      "angular-eslint"
+    ]
   }
 }

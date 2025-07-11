@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
@@ -10,7 +10,7 @@ import { AutoScrollService } from '../../services/auto-scroll.service';
 @Component({
   selector: 'app-promotional-card',
   templateUrl: './promotional-card.component.html',
-  styleUrls: ['./promotional-card.component.scss'],
+  styleUrls: [ './promotional-card.component.scss' ],
   standalone: true,
   imports: [
     CommonModule,
@@ -28,13 +28,13 @@ import { AutoScrollService } from '../../services/auto-scroll.service';
     ])
   ]
 })
-export class PromotionalCardComponent implements OnInit {
-  
+export class PromotionalCardComponent {
+
   constructor(
     private router: Router,
     private autoScrollService: AutoScrollService
-  ) {}
-  
+  ) { }
+
   services = [
     {
       icon: 'account_balance',
@@ -55,27 +55,24 @@ export class PromotionalCardComponent implements OnInit {
 
   animationState = 'in';
 
-  ngOnInit(): void {
-    // Animation trigger on component initialization
-  }
 
   navigateToContact(): void {
-    this.router.navigate(['/contacto']).then(() => {
+    this.router.navigate([ '/contacto' ]).then(() => {
       // Auto-scroll service will handle the scrolling automatically
       // but we can also manually trigger it if needed
       this.autoScrollService.scrollToContent();
     });
   }
 
-  openEmail(): void {
-    const email = 'info@empresa.com'; // Replace with actual email
-    const subject = encodeURIComponent('Consulta sobre servicios de contratación');
-    const body = encodeURIComponent('Estimados, me interesa obtener más información sobre sus servicios de contratación estatal y privada.');
-    const mailtoUrl = `mailto:${email}?subject=${subject}&body=${body}`;
-    window.open(mailtoUrl, '_self');
-  }
+  // openEmail(): void {
+  //   const email = 'info@empresa.com'; // Replace with actual email
+  //   const subject = encodeURIComponent('Consulta sobre servicios de contratación');
+  //   const body = encodeURIComponent('Estimados, me interesa obtener más información sobre sus servicios de contratación estatal y privada.');
+  //   const mailtoUrl = `mailto:${email}?subject=${subject}&body=${body}`;
+  //   window.open(mailtoUrl, '_self');
+  // }
 
-  trackByService(index: number, service: any): string {
+  trackByService(index: number, service: {icon: string, title: string, description: string}): string {
     return service.title;
   }
 }

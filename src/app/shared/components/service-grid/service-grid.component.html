@@ -1,0 +1,113 @@
+<!-- Grid Mode -->
+
+<!-- Slider Mode -->
+<div class="service-slider-container" *ngIf="displayMode === 'slider'">
+  <button
+    class="nav-button left"
+    (click)="navigate(-1)"
+    [disabled]="currentIndex === 0"
+    [attr.aria-label]="'Previous service'"
+    type="button"
+  >
+    <mat-icon aria-hidden="true">arrow_back_ios</mat-icon>
+  </button>
+
+  <div class="slider-wrapper">
+    <div
+      class="slider-track"
+      [style.transform]="'translateX(' + currentTranslateX + '%)'"
+    >
+      <div
+        class="service-card-item"
+        *ngFor="let card of servicesToDisplay; let i = index"
+      >
+        <mat-card class="service-card" tabindex="0" role="article">
+          <!-- Header Section -->
+          <mat-card-header class="card-header">
+            <mat-icon mat-card-avatar class="header-icon" aria-hidden="true">{{
+              card.icon
+            }}</mat-icon>
+            <mat-card-title class="card-title">{{ card.title }}</mat-card-title>
+            <mat-card-subtitle class="card-subtitle">{{
+              card.category
+            }}</mat-card-subtitle>
+          </mat-card-header>
+
+          <!-- Content Section -->
+          <mat-card-content class="card-content">
+            <div class="main-text">
+              <p class="service-text">{{ card.content }}</p>
+            </div>
+
+            <!-- Features List -->
+            <div
+              class="features-list"
+              *ngIf="card.features && card.features.length > 0"
+            >
+              <div class="features-title">
+                <mat-icon class="features-icon" aria-hidden="true"
+                  >checklist</mat-icon
+                >
+                <h3>Características</h3>
+              </div>
+              <div class="features-grid">
+                <div
+                  class="feature-item"
+                  *ngFor="let feature of card.features"
+                  role="listitem"
+                >
+                  <mat-icon class="feature-icon">check</mat-icon>
+                  <div class="feature-content">
+                    <span class="feature-text">{{ feature }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Highlighted Phrase -->
+            <div class="highlighted-phrase" *ngIf="card.highlight">
+              <mat-icon class="highlight-icon" aria-hidden="true"
+                >star</mat-icon
+              >
+              <span class="highlight-text">{{ card.highlight }}</span>
+            </div>
+          </mat-card-content>
+
+          <!-- Actions Section -->
+          <mat-card-actions class="card-actions" align="end">
+            <button class="btn primary" type="button">
+              <mat-icon aria-hidden="true">info</mat-icon>
+              Ver más
+            </button>
+            <button class="btn secondary" type="button">
+              <mat-icon aria-hidden="true">contact_support</mat-icon>
+              Consultar
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+
+  <button
+    class="nav-button right"
+    (click)="navigate(1)"
+    [disabled]="currentIndex >= maxIndex"
+    [attr.aria-label]="'Next service'"
+    type="button"
+  >
+    <mat-icon aria-hidden="true">arrow_forward_ios</mat-icon>
+  </button>
+
+  <!-- Dots indicator -->
+  <div class="slider-dots">
+    <button
+      class="dot"
+      *ngFor="let service of servicesToDisplay; let i = index"
+      [class.active]="i === currentIndex"
+      (click)="goToSlide(i)"
+      [attr.aria-label]="'Go to slide ' + (i + 1)"
+      type="button"
+    ></button>
+  </div>
+</div>
