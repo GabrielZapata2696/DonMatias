@@ -1,4 +1,62 @@
 <!-- Grid Mode -->
+<div class="service-grid-container" *ngIf="displayMode === 'grid'">
+  <div class="service-card-container" *ngFor="let card of servicesToDisplay">
+    <div class="service-card-simple" tabindex="0" role="article">
+      <!-- Image Section (with skeleton/placeholder) -->
+      <div class="card-image-section">
+        <div class="image-container">
+          <!-- Actual image -->
+          <img 
+            *ngIf="card.image && !imageLoading[card.id] && !imageError[card.id]" 
+            [src]="getServiceImagePath(card.image)"
+            [alt]="card.title"
+            class="service-image"
+            loading="lazy"
+            (load)="onImageLoad(card.id)"
+            (error)="onImageError(card.id)"
+          />
+          
+          <!-- Skeleton placeholder -->
+          <div 
+            *ngIf="!card.image || imageLoading[card.id] || imageError[card.id]" 
+            class="image-placeholder"
+            [class.skeleton-loading]="imageLoading[card.id]"
+          >
+            <div class="placeholder-content">
+              <mat-icon class="placeholder-icon">{{ card.icon }}</mat-icon>
+              <span class="placeholder-text">{{ card.title }}</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Overlay (only for actual images) -->
+        <div class="image-overlay" *ngIf="card.image && !imageLoading[card.id] && !imageError[card.id]">
+          <mat-icon class="overlay-icon">{{ card.icon }}</mat-icon>
+        </div>
+      </div>
+      
+      <div class="card-header-simple">
+        <div class="icon-section" *ngIf="!card.image">
+          <mat-icon class="service-icon">{{ card.icon }}</mat-icon>
+        </div>
+        <div class="title-section">
+          <h3 class="card-title">{{ card.title }}</h3>
+          <p class="card-subtitle">{{ card.category }}</p>
+        </div>
+      </div>
+      
+      <div class="card-content-simple">
+        <p class="service-description">{{ card.content }}</p>
+      </div>
+      
+      <div class="card-actions-simple">
+        <button class="btn-details" (click)="openDetailsDialog(card)">
+          Más Detalles
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Slider Mode -->
 <div class="service-slider-container" *ngIf="displayMode === 'slider'">
@@ -21,70 +79,60 @@
         class="service-card-item"
         *ngFor="let card of servicesToDisplay; let i = index"
       >
-        <mat-card class="service-card" tabindex="0" role="article">
-          <!-- Header Section -->
-          <mat-card-header class="card-header">
-            <mat-icon mat-card-avatar class="header-icon" aria-hidden="true">{{
-              card.icon
-            }}</mat-icon>
-            <mat-card-title class="card-title">{{ card.title }}</mat-card-title>
-            <mat-card-subtitle class="card-subtitle">{{
-              card.category
-            }}</mat-card-subtitle>
-          </mat-card-header>
-
-          <!-- Content Section -->
-          <mat-card-content class="card-content">
-            <div class="main-text">
-              <p class="service-text">{{ card.content }}</p>
-            </div>
-
-            <!-- Features List -->
-            <div
-              class="features-list"
-              *ngIf="card.features && card.features.length > 0"
-            >
-              <div class="features-title">
-                <mat-icon class="features-icon" aria-hidden="true"
-                  >checklist</mat-icon
-                >
-                <h3>Características</h3>
-              </div>
-              <div class="features-grid">
-                <div
-                  class="feature-item"
-                  *ngFor="let feature of card.features"
-                  role="listitem"
-                >
-                  <mat-icon class="feature-icon">check</mat-icon>
-                  <div class="feature-content">
-                    <span class="feature-text">{{ feature }}</span>
-                  </div>
+        <div class="service-card-simple slider-card" tabindex="0" role="article">
+          <!-- Image Section (with skeleton/placeholder) -->
+          <div class="card-image-section">
+            <div class="image-container">
+              <!-- Actual image -->
+              <img 
+                *ngIf="card.image && !imageLoading[card.id] && !imageError[card.id]" 
+                [src]="getServiceImagePath(card.image)"
+                [alt]="card.title"
+                class="service-image"
+                loading="lazy"
+                (load)="onImageLoad(card.id)"
+                (error)="onImageError(card.id)"
+              />
+              
+              <!-- Skeleton placeholder -->
+              <div 
+                *ngIf="!card.image || imageLoading[card.id] || imageError[card.id]" 
+                class="image-placeholder"
+                [class.skeleton-loading]="imageLoading[card.id]"
+              >
+                <div class="placeholder-content">
+                  <mat-icon class="placeholder-icon">{{ card.icon }}</mat-icon>
+                  <span class="placeholder-text">{{ card.title }}</span>
                 </div>
               </div>
             </div>
-
-            <!-- Highlighted Phrase -->
-            <div class="highlighted-phrase" *ngIf="card.highlight">
-              <mat-icon class="highlight-icon" aria-hidden="true"
-                >star</mat-icon
-              >
-              <span class="highlight-text">{{ card.highlight }}</span>
+            
+            <!-- Overlay (only for actual images) -->
+            <div class="image-overlay" *ngIf="card.image && !imageLoading[card.id] && !imageError[card.id]">
+              <mat-icon class="overlay-icon">{{ card.icon }}</mat-icon>
             </div>
-          </mat-card-content>
-
-          <!-- Actions Section -->
-          <mat-card-actions class="card-actions" align="end">
-            <button class="btn primary" type="button">
-              <mat-icon aria-hidden="true">info</mat-icon>
-              Ver más
+          </div>
+          
+          <div class="card-header-simple">
+            <div class="icon-section" *ngIf="!card.image">
+              <mat-icon class="service-icon">{{ card.icon }}</mat-icon>
+            </div>
+            <div class="title-section">
+              <h3 class="card-title">{{ card.title }}</h3>
+              <p class="card-subtitle">{{ card.category }}</p>
+            </div>
+          </div>
+          
+          <div class="card-content-simple">
+            <p class="service-description">{{ card.content }}</p>
+          </div>
+          
+          <div class="card-actions-simple">
+            <button class="btn-details" (click)="openDetailsDialog(card)">
+              Más Detalles
             </button>
-            <button class="btn secondary" type="button">
-              <mat-icon aria-hidden="true">contact_support</mat-icon>
-              Consultar
-            </button>
-          </mat-card-actions>
-        </mat-card>
+          </div>
+        </div>
       </div>
     </div>
   </div>

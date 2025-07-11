@@ -1,0 +1,44 @@
+<div class="dialog-container">
+  <div class="dialog-header">
+    <div class="icon-container">
+      <mat-icon class="service-icon">{{ data.icon }}</mat-icon>
+    </div>
+    <div class="title-container">
+      <h2 mat-dialog-title>{{ data.title }}</h2>
+      <p class="category">{{ data.category }}</p>
+    </div>
+    <button mat-icon-button class="close-button" (click)="onClose()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <mat-dialog-content>
+    <div class="content-section">
+      <h3>Descripción</h3>
+      <p class="description">{{ data.content }}</p>
+    </div>
+
+    <div class="content-section">
+      <h3>Características</h3>
+      <div class="features-grid">
+        <div class="feature-item" *ngFor="let feature of data.features">
+          <mat-icon class="feature-icon">check_circle</mat-icon>
+          <span>{{ feature }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="data.highlight" class="highlight-section">
+      <mat-icon class="highlight-icon">star</mat-icon>
+      <span class="highlight-text">{{ data.highlight }}</span>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onClose()" class="cancel-button">Cerrar</button>
+    <button mat-raised-button color="primary" (click)="onContact()" class="contact-button">
+      <mat-icon>contact_mail</mat-icon>
+      Contactar
+    </button>
+  </mat-dialog-actions>
+</div>

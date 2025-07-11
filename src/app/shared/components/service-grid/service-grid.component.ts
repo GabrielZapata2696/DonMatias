@@ -3,10 +3,13 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
 
 // Import from external files
 import { ServiceCard, DisplayMode } from '../../interfaces';
 import { getServicesData } from '../../data';
+import { ServiceDetailDialogComponent } from '../service-detail-dialog/service-detail-dialog.component';
+import { ImageLoaderService } from '../../services/image-loader.service';
 
 @Component({
   selector: 'app-service-grid',
@@ -31,8 +34,17 @@ export class ServiceGridComponent implements OnInit {
   cardSpacing = 1.5; // rem units for margin + gap
   visibleCards = 2; // Default to 2 cards visible
 
+  // Image loading state management
+  imageLoading: { [key: string]: boolean } = {};
+  imageError: { [key: string]: boolean } = {};
+
   // Default services loaded from external data file
   private defaultServices: ServiceCard[] = getServicesData();
+
+  constructor(
+    private dialog: MatDialog,
+    private imageLoaderService: ImageLoaderService
+  ) {}
 
   // Get services to display (input or default)
   get servicesToDisplay(): ServiceCard[] {
@@ -97,6 +109,7 @@ export class ServiceGridComponent implements OnInit {
   // Initialize slider on component changes
   ngOnInit(): void {
     this.updateCardWidth();
+    this.initializeImageStates();
 
     // Listen for window resize to update card width
     if (typeof window !== 'undefined') {
@@ -104,6 +117,16 @@ export class ServiceGridComponent implements OnInit {
         this.updateCardWidth();
       });
     }
+  }
+
+  // Initialize image loading states for all services
+  private initializeImageStates(): void {
+    this.servicesToDisplay.forEach(service => {
+      if (service.image) {
+        this.imageLoading[service.id] = true;
+        this.imageError[service.id] = false;
+      }
+    });
   }
 
   private updateCardWidth(): void {
@@ -126,6 +149,42 @@ export class ServiceGridComponent implements OnInit {
       // Update transform after changing card width
       this.updateTransform();
     }
+  }
+
+  // Image loading state methods
+  onImageLoad(serviceId: string): void {
+    this.imageLoading[serviceId] = false;
+    this.imageError[serviceId] = false;
+  }
+
+  onImageError(serviceId: string): void {
+    this.imageLoading[serviceId] = false;
+    this.imageError[serviceId] = true;
+  }
+
+  // Image method
+  getServiceImagePath(imageName?: string): string {
+    return this.imageLoaderService.getServiceImagePath(imageName);
+  }
+
+  // Dialog method
+  openDetailsDialog(service: ServiceCard): void {
+    const dialogRef = this.dialog.open(ServiceDetailDialogComponent, {
+      width: '600px',
+      maxWidth: '90vw',
+      data: service,
+      disableClose: false,
+      autoFocus: true,
+      restoreFocus: true,
+      panelClass: 'service-dialog'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'contact') {
+        // Handle contact action - you can emit an event or navigate to contact page
+        console.log('Contact requested for service:', service.title);
+      }
+    });
   }
 }
 

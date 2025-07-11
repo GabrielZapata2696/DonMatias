@@ -3,6 +3,9 @@
  * Defines the properties required for each service card in the application
  */
 export interface ServiceCard {
+  /** Unique identifier for the service */
+  id: string;
+  
   /** Main title of the service */
   title: string;
   
@@ -20,6 +23,9 @@ export interface ServiceCard {
   
   /** Highlighted phrase or unique selling point */
   highlight: string;
+  
+  /** Image filename for the service (optional) */
+  image?: string;
 }
 
 /**

@@ -6,6 +6,7 @@ import { ServiceCard } from '../interfaces/service-card.interface';
  */
 export const SERVICES_DATA: ServiceCard[] = [
   {
+    id: 'consultoria-territorial',
     title: 'Consultoría Territorial',
     category: 'Planificación Urbana',
     content: 'Planeación urbana, ordenamiento territorial y fortalecimiento institucional para el desarrollo sostenible de los municipios.',
@@ -16,9 +17,11 @@ export const SERVICES_DATA: ServiceCard[] = [
       'Fortalecimiento Institucional',
       'Asesoría Normativa'
     ],
-    highlight: 'Experiencia comprobada en desarrollo territorial'
+    highlight: 'Experiencia comprobada en desarrollo territorial',
+    image: 'consultoria-territorial.jpg'
   },
   {
+    id: 'interventoria-tecnica',
     title: 'Interventoría Técnica',
     category: 'Supervisión de Obras',
     content: 'Supervisión técnica, contable, financiera y ambiental de obras públicas garantizando calidad y cumplimiento.',
@@ -29,9 +32,11 @@ export const SERVICES_DATA: ServiceCard[] = [
       'Seguimiento Ambiental',
       'Informes Técnicos'
     ],
-    highlight: 'Garantía de calidad en cada proyecto'
+    highlight: 'Garantía de calidad en cada proyecto',
+    image: 'interventoria-tecnica.jpg'
   },
   {
+    id: 'proyectos-vivienda',
     title: 'Proyectos de Vivienda',
     category: 'Vivienda de Interés Social',
     content: 'Proyecto "Miriam Madrid" – 11 viviendas VIS con zonas verdes y espacio comunitario, mejorando la calidad de vida.',
@@ -42,9 +47,11 @@ export const SERVICES_DATA: ServiceCard[] = [
       'Espacios Comunitarios',
       'Sostenibilidad Ambiental'
     ],
-    highlight: 'Transformando comunidades con vivienda digna'
+    highlight: 'Transformando comunidades con vivienda digna',
+    image: 'proyectos-vivienda.jpg'
   },
   {
+    id: 'infraestructura-vias',
     title: 'Infraestructura y Vías',
     category: 'Conectividad Rural',
     content: 'Construcción de pavimento, mantenimiento vial y conectividad rural en Antioquia para mejorar la movilidad.',
@@ -55,9 +62,11 @@ export const SERVICES_DATA: ServiceCard[] = [
       'Conectividad Rural',
       'Señalización'
     ],
-    highlight: 'Conectando territorios, generando oportunidades'
+    highlight: 'Conectando territorios, generando oportunidades',
+    image: 'infraestructura-vias.jpg'
   },
   {
+    id: 'gestion-documental',
     title: 'Gestión Documental',
     category: 'Sistemas de Información',
     content: 'Asesoría administrativa, sistemas de información y archivo para entidades territoriales optimizando procesos.',
@@ -68,9 +77,11 @@ export const SERVICES_DATA: ServiceCard[] = [
       'Digitalización',
       'Capacitación'
     ],
-    highlight: 'Modernizando la gestión administrativa'
+    highlight: 'Modernizando la gestión administrativa',
+    image: 'gestion-documental.jpg'
   },
   {
+    id: 'optimizacion-urbana',
     title: 'Optimización Urbana',
     category: 'Servicios Públicos',
     content: 'Diseño y modernización de redes de acueducto y alcantarillado para mejorar la prestación de servicios.',
@@ -81,7 +92,8 @@ export const SERVICES_DATA: ServiceCard[] = [
       'Optimización Hidráulica',
       'Modernización Tecnológica'
     ],
-    highlight: 'Servicios públicos eficientes y sostenibles'
+    highlight: 'Servicios públicos eficientes y sostenibles',
+    image: 'optimizacion-urbana.jpg'
   }
 ];
 
@@ -91,6 +103,15 @@ export const SERVICES_DATA: ServiceCard[] = [
  */
 export const getServicesData = (): ServiceCard[] => {
   return SERVICES_DATA;
+};
+
+/**
+ * Get a specific service by ID
+ * @param id - The ID of the service to find
+ * @returns ServiceCard object or undefined if not found
+ */
+export const getServiceById = (id: string): ServiceCard | undefined => {
+  return SERVICES_DATA.find(service => service.id === id);
 };
 
 /**
