@@ -6,8 +6,8 @@
       <div class="card-image-section">
         <div class="image-container">
           <!-- Actual image -->
-          <img 
-            *ngIf="card.image && !imageLoading[card.id] && !imageError[card.id]" 
+          <img
+            *ngIf="card.image && !imageLoading[card.id] && !imageError[card.id]"
             [src]="getServiceImagePath(card.image)"
             [alt]="card.title"
             class="service-image"
@@ -15,10 +15,10 @@
             (load)="onImageLoad(card.id)"
             (error)="onImageError(card.id)"
           />
-          
+
           <!-- Skeleton placeholder -->
-          <div 
-            *ngIf="!card.image || imageLoading[card.id] || imageError[card.id]" 
+          <div
+            *ngIf="!card.image || imageLoading[card.id] || imageError[card.id]"
             class="image-placeholder"
             [class.skeleton-loading]="imageLoading[card.id]"
           >
@@ -28,13 +28,16 @@
             </div>
           </div>
         </div>
-        
+
         <!-- Overlay (only for actual images) -->
-        <div class="image-overlay" *ngIf="card.image && !imageLoading[card.id] && !imageError[card.id]">
+        <div
+          class="image-overlay"
+          *ngIf="card.image && !imageLoading[card.id] && !imageError[card.id]"
+        >
           <mat-icon class="overlay-icon">{{ card.icon }}</mat-icon>
         </div>
       </div>
-      
+
       <div class="card-header-simple">
         <div class="icon-section" *ngIf="!card.image">
           <mat-icon class="service-icon">{{ card.icon }}</mat-icon>
@@ -44,11 +47,11 @@
           <p class="card-subtitle">{{ card.category }}</p>
         </div>
       </div>
-      
+
       <div class="card-content-simple">
         <p class="service-description">{{ card.content }}</p>
       </div>
-      
+
       <div class="card-actions-simple">
         <button class="btn-details" (click)="openDetailsDialog(card)">
           Más Detalles
@@ -62,7 +65,7 @@
 <div class="service-slider-container" *ngIf="displayMode === 'slider'">
   <button
     class="nav-button left"
-    (click)="navigate(-1)"
+    (click)="prevSlide()"
     [disabled]="currentIndex === 0"
     [attr.aria-label]="'Previous service'"
     type="button"
@@ -74,18 +77,27 @@
     <div
       class="slider-track"
       [style.transform]="'translateX(' + currentTranslateX + '%)'"
+      (touchstart)="onTouchStart($event)"
+      (touchmove)="onTouchMove($event)"
+      (touchend)="onTouchEnd()"
     >
       <div
         class="service-card-item"
         *ngFor="let card of servicesToDisplay; let i = index"
       >
-        <div class="service-card-simple slider-card" tabindex="0" role="article">
+        <div
+          class="service-card-simple slider-card"
+          tabindex="0"
+          role="article"
+        >
           <!-- Image Section (with skeleton/placeholder) -->
           <div class="card-image-section">
             <div class="image-container">
               <!-- Actual image -->
-              <img 
-                *ngIf="card.image && !imageLoading[card.id] && !imageError[card.id]" 
+              <img
+                *ngIf="
+                  card.image && !imageLoading[card.id] && !imageError[card.id]
+                "
                 [src]="getServiceImagePath(card.image)"
                 [alt]="card.title"
                 class="service-image"
@@ -93,10 +105,12 @@
                 (load)="onImageLoad(card.id)"
                 (error)="onImageError(card.id)"
               />
-              
+
               <!-- Skeleton placeholder -->
-              <div 
-                *ngIf="!card.image || imageLoading[card.id] || imageError[card.id]" 
+              <div
+                *ngIf="
+                  !card.image || imageLoading[card.id] || imageError[card.id]
+                "
                 class="image-placeholder"
                 [class.skeleton-loading]="imageLoading[card.id]"
               >
@@ -106,13 +120,18 @@
                 </div>
               </div>
             </div>
-            
+
             <!-- Overlay (only for actual images) -->
-            <div class="image-overlay" *ngIf="card.image && !imageLoading[card.id] && !imageError[card.id]">
+            <div
+              class="image-overlay"
+              *ngIf="
+                card.image && !imageLoading[card.id] && !imageError[card.id]
+              "
+            >
               <mat-icon class="overlay-icon">{{ card.icon }}</mat-icon>
             </div>
           </div>
-          
+
           <div class="card-header-simple">
             <div class="icon-section" *ngIf="!card.image">
               <mat-icon class="service-icon">{{ card.icon }}</mat-icon>
@@ -122,11 +141,11 @@
               <p class="card-subtitle">{{ card.category }}</p>
             </div>
           </div>
-          
+
           <div class="card-content-simple">
-            <p class="service-description">{{ card.content }}</p>
+            <!-- <p class="service-description">{{ card.content }}</p> -->
           </div>
-          
+
           <div class="card-actions-simple">
             <button class="btn-details" (click)="openDetailsDialog(card)">
               Más Detalles
@@ -139,7 +158,7 @@
 
   <button
     class="nav-button right"
-    (click)="navigate(1)"
+    (click)="nextSlide()"
     [disabled]="currentIndex >= maxIndex"
     [attr.aria-label]="'Next service'"
     type="button"

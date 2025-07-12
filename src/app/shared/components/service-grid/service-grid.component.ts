@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,7 +23,7 @@ import { ImageLoaderService } from '../../services/image-loader.service';
     MatIconModule
   ]
 })
-export class ServiceGridComponent implements OnInit {
+export class ServiceGridComponent implements OnInit, OnDestroy {
   @Input() displayMode: DisplayMode = 'grid';
   @Input() services: ServiceCard[] = [];
 
@@ -33,6 +33,11 @@ export class ServiceGridComponent implements OnInit {
   cardWidth = 50; // Percentage width per card
   cardSpacing = 1.5; // rem units for margin + gap
   visibleCards = 2; // Default to 2 cards visible
+
+  // Touch handling variables
+  touchStartX = 0;
+  touchEndX = 0;
+  minSwipeDistance = 50;
 
   // Image loading state management
   imageLoading: { [key: string]: boolean } = {};
@@ -75,6 +80,25 @@ export class ServiceGridComponent implements OnInit {
 
     if (newIndex >= 0 && newIndex <= this.maxIndex) {
       this.currentIndex = newIndex;
+      this.updateTransform();
+    }
+  }
+
+  // Slide navigation methods (similar to header slider)
+  nextSlide(): void {
+    if (this.displayMode !== 'slider') return;
+    
+    if (this.currentIndex < this.maxIndex) {
+      this.currentIndex++;
+      this.updateTransform();
+    }
+  }
+
+  prevSlide(): void {
+    if (this.displayMode !== 'slider') return;
+    
+    if (this.currentIndex > 0) {
+      this.currentIndex--;
       this.updateTransform();
     }
   }
@@ -162,6 +186,45 @@ export class ServiceGridComponent implements OnInit {
     this.imageError[serviceId] = true;
   }
 
+  // Touch event handlers for mobile swipe
+  onTouchStart(event: TouchEvent): void {
+    if (this.displayMode !== 'slider') return;
+    this.touchStartX = event.touches[0].clientX;
+  }
+
+  onTouchMove(event: TouchEvent): void {
+    if (this.displayMode !== 'slider') return;
+    this.touchEndX = event.touches[0].clientX;
+  }
+
+  onTouchEnd(): void {
+    if (this.displayMode !== 'slider') return;
+    
+    const swipeDistance = this.touchEndX - this.touchStartX;
+
+    if (Math.abs(swipeDistance) > this.minSwipeDistance && this.touchEndX) {
+      if (swipeDistance > 0) {
+        // Swiped right - go to previous slide
+        this.prevSlide();
+      } else {
+        // Swiped left - go to next slide
+        this.nextSlide();
+      }
+    }
+
+    // Reset values
+    this.touchStartX = 0;
+    this.touchEndX = 0;
+  }
+
+  // Lifecycle method
+  ngOnDestroy(): void {
+    // Clean up any event listeners or subscriptions if needed
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('resize', this.updateCardWidth);
+    }
+  }
+
   // Image method
   getServiceImagePath(imageName?: string): string {
     return this.imageLoaderService.getServiceImagePath(imageName);
@@ -180,9 +243,9 @@ export class ServiceGridComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      // Dialog handles navigation internally, no action needed here
       if (result === 'contact') {
-        // Handle contact action - you can emit an event or navigate to contact page
-        console.log('Contact requested for service:', service.title);
+        // Contact navigation is handled in the dialog component
       }
     });
   }

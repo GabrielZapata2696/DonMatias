@@ -18,7 +18,8 @@ export const SERVICES_DATA: ServiceCard[] = [
       'Asesoría Normativa'
     ],
     highlight: 'Experiencia comprobada en desarrollo territorial',
-    image: 'consultoria-territorial.jpg'
+    image: 'consultoria-territorial.jpg',
+    images: ['consultoria-territorial-1.jpg', 'consultoria-territorial-2.jpg', 'consultoria-territorial-3.jpg']
   },
   {
     id: 'interventoria-tecnica',
@@ -33,7 +34,8 @@ export const SERVICES_DATA: ServiceCard[] = [
       'Informes Técnicos'
     ],
     highlight: 'Garantía de calidad en cada proyecto',
-    image: 'interventoria-tecnica.jpg'
+    image: 'interventoria-tecnica.jpg',
+    images: ['interventoria-tecnica-1.jpg', 'interventoria-tecnica-2.jpg', 'interventoria-tecnica-3.jpg']
   },
   {
     id: 'proyectos-vivienda',
@@ -48,7 +50,8 @@ export const SERVICES_DATA: ServiceCard[] = [
       'Sostenibilidad Ambiental'
     ],
     highlight: 'Transformando comunidades con vivienda digna',
-    image: 'proyectos-vivienda.jpg'
+    image: 'proyectos-vivienda.jpg',
+    images: ['proyectos-vivienda-1.jpg', 'proyectos-vivienda-2.jpg', 'proyectos-vivienda-3.jpg']
   },
   {
     id: 'infraestructura-vias',
@@ -63,7 +66,8 @@ export const SERVICES_DATA: ServiceCard[] = [
       'Señalización'
     ],
     highlight: 'Conectando territorios, generando oportunidades',
-    image: 'infraestructura-vias.jpg'
+    image: 'infraestructura-vias.jpg',
+    images: ['infraestructura-vias-1.jpg', 'infraestructura-vias-2.jpg', 'infraestructura-vias-3.jpg']
   },
   {
     id: 'gestion-documental',
@@ -78,7 +82,8 @@ export const SERVICES_DATA: ServiceCard[] = [
       'Capacitación'
     ],
     highlight: 'Modernizando la gestión administrativa',
-    image: 'gestion-documental.jpg'
+    image: 'gestion-documental.jpg',
+    images: ['gestion-documental-1.jpg', 'gestion-documental-2.jpg', 'gestion-documental-3.jpg']
   },
   {
     id: 'optimizacion-urbana',
@@ -93,7 +98,8 @@ export const SERVICES_DATA: ServiceCard[] = [
       'Modernización Tecnológica'
     ],
     highlight: 'Servicios públicos eficientes y sostenibles',
-    image: 'optimizacion-urbana.jpg'
+    image: 'optimizacion-urbana.jpg',
+    images: ['optimizacion-urbana-1.jpg', 'optimizacion-urbana-2.jpg', 'optimizacion-urbana-3.jpg']
   }
 ];
 

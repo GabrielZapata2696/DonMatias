@@ -20,11 +20,23 @@
 
     <div class="content-section">
       <h3>Características</h3>
-      <div class="features-grid">
+      
+      <!-- Desktop view - Grid layout -->
+      <div class="features-grid desktop-only">
         <div class="feature-item" *ngFor="let feature of data.features">
           <mat-icon class="feature-icon">check_circle</mat-icon>
           <span>{{ feature }}</span>
         </div>
+      </div>
+      
+      <!-- Mobile view - Chips layout -->
+      <div class="features-chips mobile-only">
+        <mat-chip-set>
+          <mat-chip *ngFor="let feature of data.features">
+            <mat-icon matChipAvatar>check_circle</mat-icon>
+            {{ feature }}
+          </mat-chip>
+        </mat-chip-set>
       </div>
     </div>
 
@@ -32,13 +44,55 @@
       <mat-icon class="highlight-icon">star</mat-icon>
       <span class="highlight-text">{{ data.highlight }}</span>
     </div>
+
+    <!-- Image Gallery Section -->
+    <div *ngIf="hasImages()" class="content-section">
+      <h3>Galería de Imágenes</h3>
+      <div class="image-gallery">
+        <div 
+          *ngFor="let image of data.images; let i = index" 
+          class="gallery-item"
+          (click)="isImageLoaded(i) ? openImageViewer(i) : null"
+          [class.loading]="!isImageLoaded(i)"
+        >
+          <!-- Image Skeleton -->
+          <div 
+            *ngIf="!isImageLoaded(i)" 
+            class="image-skeleton"
+          >
+            <div class="skeleton-content">
+              <mat-icon class="skeleton-icon">image</mat-icon>
+              <div class="skeleton-text">Cargando...</div>
+            </div>
+          </div>
+          
+          <!-- Actual Image -->
+          <img 
+            [src]="getImagePath(image)" 
+            [alt]="data.title + ' - Imagen ' + (i + 1)"
+            (load)="onImageLoad(i)"
+            (error)="onImageError($event, i)"
+            class="gallery-image"
+            [style.display]="isImageLoaded(i) ? 'block' : 'none'"
+          >
+          
+          <!-- Overlay for loaded images -->
+          <div 
+            *ngIf="isImageLoaded(i)" 
+            class="gallery-overlay"
+          >
+            <mat-icon class="gallery-icon">zoom_in</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
   </mat-dialog-content>
 
   <mat-dialog-actions align="end">
     <button mat-button (click)="onClose()" class="cancel-button">Cerrar</button>
     <button mat-raised-button color="primary" (click)="onContact()" class="contact-button">
       <mat-icon>contact_mail</mat-icon>
-      Contactar
+      Contáctenos
     </button>
   </mat-dialog-actions>
 </div>

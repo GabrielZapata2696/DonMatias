@@ -100,8 +100,8 @@
 
 @media (max-width: 768px) {
   .ally-slider-container {
-    height: 180px;
-    padding: 5px 0;
+    height: 200px; /* Increase height to prevent clipping */
+    padding: 10px 0; /* Add more padding */
   }
 
   .ally-item {
@@ -126,13 +126,13 @@
 
 @media (max-width: 480px) {
   .ally-slider-container {
-    height: 100px;
-    padding: 5px 0;
+    height: 130px; /* Increase container height to accommodate wrapper */
+    padding: 10px 0; /* Add proper padding */
   }
 
   .ally-item {
     width: 120px;
-    height: 90px;
+    height: 80px; /* Reduce item height to fit better */
     padding: 4px;
     border-radius: 8px;
   }
@@ -142,7 +142,7 @@
   }
 
   .slider-wrapper {
-    height: 110px;
+    height: 100px; /* Reduce wrapper height to fit in container */
   }
 
   .slider-track {
@@ -153,19 +153,19 @@
 
 @media (max-width: 360px) {
   .ally-slider-container {
-    height: 160px;
-    padding: 8px 0;
+    height: 120px; /* Reduce height but ensure wrapper fits */
+    padding: 10px 0; /* Add proper padding for hover effects */
   }
 
   .ally-item {
     width: 100px;
-    height: 75px;
+    height: 70px; /* Slightly reduce height */
     padding: 3px;
     border-radius: 6px;
   }
 
   .slider-wrapper {
-    height: 95px;
+    height: 85px; /* Ensure wrapper fits within container */
   }
 
   .slider-track {

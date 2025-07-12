@@ -55,12 +55,21 @@ mat-dialog-content {
   padding: 24px;
   max-height: 500px;
   overflow-y: auto;
+  
+  @media (max-width: 768px) {
+    padding: 16px;
+    max-height: 400px;
+  }
 
   .content-section {
     margin-bottom: 32px;
     
     &:last-child {
       margin-bottom: 0;
+    }
+    
+    @media (max-width: 768px) {
+      margin-bottom: 24px;
     }
 
     h3 {
@@ -71,6 +80,11 @@ mat-dialog-content {
       border-bottom: 2px solid #3f51b5;
       display: inline-block;
       padding-bottom: 4px;
+      
+      @media (max-width: 768px) {
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
     }
 
     .description {
@@ -78,9 +92,15 @@ mat-dialog-content {
       color: #555;
       line-height: 1.6;
       font-size: 16px;
+      
+      @media (max-width: 768px) {
+        font-size: 14px;
+        line-height: 1.5;
+      }
     }
   }
 
+  /* Desktop Features Grid */
   .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -116,6 +136,44 @@ mat-dialog-content {
     }
   }
 
+  /* Mobile Features Chips */
+  .features-chips {
+    margin-top: 16px;
+    
+    mat-chip-set {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      
+      mat-chip {
+        background-color: #e3f2fd;
+        color: #1976d2;
+        border: 1px solid #bbdefb;
+        font-size: 11px;
+        font-weight: 500;
+        padding: 4px 8px;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        min-height: 28px;
+        height: auto;
+        
+        &:hover {
+          background-color: #bbdefb;
+          transform: translateY(-1px);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+        }
+        
+        mat-icon {
+          color: #4caf50;
+          font-size: 14px;
+          width: 14px;
+          height: 14px;
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+
   .highlight-section {
     display: flex;
     align-items: center;
@@ -136,6 +194,150 @@ mat-dialog-content {
       font-weight: 600;
       line-height: 1.4;
     }
+  }
+
+  /* Image Gallery Styles */
+  .image-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 12px;
+    }
+
+    @media (max-width: 480px) {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 8px;
+    }
+  }
+
+  .gallery-item {
+    position: relative;
+    cursor: pointer;
+    border-radius: 8px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+
+      .gallery-overlay {
+        opacity: 1;
+      }
+    }
+  }
+
+  .gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .gallery-icon {
+    color: white;
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Image Skeleton Styles */
+  .gallery-item.loading {
+    cursor: default;
+    
+    &:hover {
+      transform: none;
+      box-shadow: none;
+    }
+  }
+
+  .image-skeleton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      90deg,
+      #f0f0f0 25%,
+      #e0e0e0 50%,
+      #f0f0f0 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .skeleton-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+    text-align: center;
+  }
+
+  .skeleton-icon {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    margin-bottom: 8px;
+    opacity: 0.6;
+  }
+
+  .skeleton-text {
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 0.8;
+  }
+
+  /* Shimmer Animation */
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+}
+
+/* Responsive visibility classes */
+.desktop-only {
+  display: block;
+  
+  @media (max-width: 768px) {
+    display: none !important;
+  }
+}
+
+.mobile-only {
+  display: none;
+  
+  @media (max-width: 768px) {
+    display: block !important;
   }
 }
 

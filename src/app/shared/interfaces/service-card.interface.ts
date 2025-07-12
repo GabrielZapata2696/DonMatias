@@ -26,6 +26,9 @@ export interface ServiceCard {
   
   /** Image filename for the service (optional) */
   image?: string;
+  
+  /** Array of additional images for the service gallery */
+  images?: string[];
 }
 
 /**
