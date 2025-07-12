@@ -416,10 +416,20 @@ $gradient: linear-gradient(135deg, $primary 0%, $secondary 75%, $accent 100%);
   }
 }
 
+// Slider card wrapper
+.service-card-item {
+  flex: 0 0 calc(50% - 0.75rem);
+  max-width: calc(50% - 0.75rem);
+  margin: 0 0.375rem;
+  box-sizing: border-box;
+}
+
 // Slider card adjustments
 .service-card-simple.slider-card {
-  margin: 0 8px;
+  margin: 0;
   min-height: 320px;
+  width: 100%;
+  max-width: 100%;
   
   .card-header-simple {
     padding: 20px 20px 12px;
@@ -525,6 +535,13 @@ $gradient: linear-gradient(135deg, $primary 0%, $secondary 75%, $accent 100%);
 
   .slider-track {
     gap: 0;
+  }
+  
+  // Mobile slider card adjustments
+  .service-card-item {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin: 0;
   }
 
   .nav-button {
