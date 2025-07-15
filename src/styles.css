@@ -248,18 +248,34 @@ body {
   width: auto !important;
 }
 
-/* Ensure dialog content doesn't overflow and hide scrollbar */
+/* Ensure dialog content scrolls properly */
 .service-dialog .mat-mdc-dialog-content {
-  overflow: hidden !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
   word-wrap: break-word !important;
   max-height: none !important;
-  scrollbar-width: none !important; /* Firefox */
-  -ms-overflow-style: none !important; /* Internet Explorer 10+ */
+  -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: thin !important; /* Firefox */
+  -ms-overflow-style: auto !important; /* Internet Explorer 10+ */
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
+/* Style scrollbar for Chrome, Safari and Opera */
 .service-dialog .mat-mdc-dialog-content::-webkit-scrollbar {
-  display: none !important;
+  width: 4px !important;
+}
+
+.service-dialog .mat-mdc-dialog-content::-webkit-scrollbar-track {
+  background: #f1f1f1 !important;
+  border-radius: 4px !important;
+}
+
+.service-dialog .mat-mdc-dialog-content::-webkit-scrollbar-thumb {
+  background: #888 !important;
+  border-radius: 4px !important;
+}
+
+.service-dialog .mat-mdc-dialog-content::-webkit-scrollbar-thumb:hover {
+  background: #555 !important;
 }
 
 /* Mobile adjustments for service dialog */
