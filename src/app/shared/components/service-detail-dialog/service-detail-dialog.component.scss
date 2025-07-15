@@ -77,41 +77,47 @@
     min-width: 0; // Prevents flex item from overflowing
 
     h2 {
-      margin: 0 0 4px 0;
-      font-size: 28px;
-      font-weight: 600;
+      margin: 0 0 6px 0;
+      font-size: 32px; // Increased for better prominence (MD3 headline-medium)
+      font-weight: 700; // Bolder for primary heading
       color: #1a1a1a;
-      line-height: 1.2;
+      line-height: 1.25; // Improved line height for larger text
       word-wrap: break-word;
-      text-align: left; // Ensure left alignment
-      width: 100%; // Take full width for proper alignment
+      text-align: left;
+      width: 100%;
+      letter-spacing: -0.02em; // Subtle letter spacing for better readability
 
       @media (max-width: 768px) {
-        font-size: 20px;
+        font-size: 24px; // Increased from 20px for better mobile prominence
         line-height: 1.3;
-        margin-bottom: 2px;
+        margin-bottom: 4px;
       }
 
       @media (max-width: 480px) {
-        font-size: 18px;
+        font-size: 22px; // Increased from 18px for better small screen prominence
+        line-height: 1.27;
       }
     }
 
     .category {
       margin: 0;
-      color: #666;
-      font-size: 13px;
-      font-weight: 400;
-      line-height: 1.2;
-      text-align: left; // Ensure left alignment
-      width: 100%; // Take full width for proper alignment
+      color: #6b7280; // Improved secondary color (MD3 on-surface-variant)
+      font-size: 15px; // Increased for better readability (MD3 body-medium)
+      font-weight: 500; // Slightly bolder for better hierarchy
+      line-height: 1.4; // Improved line height for readability
+      text-align: left;
+      width: 100%;
+      letter-spacing: 0.01em; // Subtle letter spacing
+      opacity: 0.87; // MD3 secondary text opacity
 
       @media (max-width: 768px) {
-        font-size: 12px;
+        font-size: 14px; // Increased from 12px for better mobile readability
+        line-height: 1.35;
       }
 
       @media (max-width: 480px) {
-        font-size: 11px;
+        font-size: 13px; // Increased from 11px for better small screen readability
+        line-height: 1.4;
       }
     }
   }
@@ -166,13 +172,15 @@ mat-dialog-content {
 
   @media (max-width: 768px) {
     padding: 1rem; // MD3 mobile spacing with rem units
-    max-height: calc(100vh - 220px); // Increased available space for mobile
+    max-height: calc(100vh - 180px); // Reduced from 220px to give more space
+    max-height: calc(100dvh - 180px); // Use dvh for better mobile support
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
   }
-  
+
   @media (max-width: 480px) {
-    max-height: calc(100vh - 200px); // More space for smaller screens
+    max-height: calc(100vh - 160px); // Reduced from 200px to give more space
+    max-height: calc(100dvh - 160px); // Use dvh for better mobile support
     padding: 0.75rem;
   }
 
