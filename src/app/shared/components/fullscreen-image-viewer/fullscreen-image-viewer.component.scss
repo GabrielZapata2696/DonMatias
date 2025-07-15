@@ -4,14 +4,15 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - env(safe-area-inset-bottom));
+  height: calc(100dvh - env(safe-area-inset-bottom));
   background-color: rgba(0, 0, 0, 0.9);
   color: white;
   z-index: 1000;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: 0; // Remove padding to avoid clipping
+  padding-bottom: env(safe-area-inset-bottom); // Add padding to ensure visibility
 }
 
 .viewer-header {
@@ -64,10 +65,21 @@
   height: auto;
   max-width: 90vw; // Limit to 90% of viewport width
   max-height: 70vh; // Limit to 70% of viewport height
+  max-height: 70dvh; // Use dvh for better mobile support
   object-fit: contain; // Ensure image fits within container without clipping
   display: block;
   border-radius: 0.5rem; // Add subtle border radius
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); // Add subtle shadow
+  
+  @media (max-width: 768px) {
+    max-height: 60vh; // Reduce height on mobile to give more space for thumbnails
+    max-height: 60dvh; // Use dvh for better mobile support
+  }
+  
+  @media (max-width: 480px) {
+    max-height: 55vh; // Further reduce on small screens
+    max-height: 55dvh; // Use dvh for better mobile support
+  }
 }
 
 .nav-button {
