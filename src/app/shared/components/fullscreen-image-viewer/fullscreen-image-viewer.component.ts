@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { ImageLoaderService } from '../../services/image-loader.service';
 
 export interface ImageViewerData {
   images: string[];
@@ -31,7 +32,8 @@ export class FullscreenImageViewerComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<FullscreenImageViewerComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: ImageViewerData
+    @Inject(MAT_DIALOG_DATA) public data: ImageViewerData,
+    private imageLoaderService: ImageLoaderService
   ) {}
 
   ngOnInit(): void {
@@ -69,7 +71,11 @@ export class FullscreenImageViewerComponent implements OnInit {
   }
 
   getCurrentImagePath(): string {
-    return this.imageBasePath + this.images[this.currentIndex];
+    return this.imageLoaderService.getServiceImagePath(this.images[this.currentIndex]);
+  }
+
+  getImagePath(imageName: string): string {
+    return this.imageLoaderService.getServiceImagePath(imageName);
   }
 
   onMainImageLoad(): void {

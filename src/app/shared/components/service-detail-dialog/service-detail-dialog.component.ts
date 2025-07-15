@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { ServiceCard } from '../../interfaces/service-card.interface';
 import { FullscreenImageViewerComponent, ImageViewerData } from '../fullscreen-image-viewer/fullscreen-image-viewer.component';
+import { ImageLoaderService } from '../../services/image-loader.service';
 
 @Component({
   selector: 'app-service-detail-dialog',
@@ -29,7 +30,8 @@ export class ServiceDetailDialogComponent {
     public dialogRef: MatDialogRef<ServiceDetailDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ServiceCard,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private imageLoaderService: ImageLoaderService
   ) {
     // Initialize all images as not loaded
     if (this.data.images) {
@@ -61,7 +63,7 @@ export class ServiceDetailDialogComponent {
    * Get the complete image path for a given image filename
    */
   getImagePath(imageName: string): string {
-    return this.imageBasePath + imageName;
+    return this.imageLoaderService.getServiceImagePath(imageName);
   }
 
   /**

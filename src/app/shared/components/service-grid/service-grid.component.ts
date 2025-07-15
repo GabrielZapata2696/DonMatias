@@ -147,7 +147,7 @@ export class ServiceGridComponent implements OnInit, OnDestroy {
   private initializeImageStates(): void {
     this.servicesToDisplay.forEach(service => {
       if (service.image) {
-        this.imageLoading[service.id] = true;
+        this.imageLoading[service.id] = false;
         this.imageError[service.id] = false;
       }
     });
@@ -233,8 +233,10 @@ export class ServiceGridComponent implements OnInit, OnDestroy {
   // Dialog method
   openDetailsDialog(service: ServiceCard): void {
     const dialogRef = this.dialog.open(ServiceDetailDialogComponent, {
-      width: '600px',
+      width: 'auto',
+      minWidth: '300px',
       maxWidth: '90vw',
+      height: 'auto',
       data: service,
       disableClose: false,
       autoFocus: true,

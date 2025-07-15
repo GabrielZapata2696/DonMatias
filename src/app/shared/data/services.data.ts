@@ -6,52 +6,44 @@ import { ServiceCard } from '../interfaces/service-card.interface';
  */
 export const SERVICES_DATA: ServiceCard[] = [
   {
-    id: 'consultoria-territorial',
-    title: 'Consultoría Territorial',
-    category: 'Planificación Urbana',
-    content: 'Planeación urbana, ordenamiento territorial y fortalecimiento institucional para el desarrollo sostenible de los municipios.',
+    id: 'servicios-integrales',
+    title: 'Servicios Integrales de Consultoría',
+    category: 'Consultoría Especializada',
+    content: 'Ofrecemos servicios integrales de consultoría territorial, interventoría técnica y gestión documental para el desarrollo sostenible de los municipios y la optimización de procesos administrativos.',
+    icon: 'business_center',
+    features: [
+      'Consultoría Territorial y Ordenamiento',
+      'Interventoría Técnica de Obras',
+      'Gestión Documental y Archivo',
+      'Fortalecimiento Institucional',
+      'Supervisión Financiera y Ambiental',
+      'Asesoría Normativa',
+      'Sistemas de Información',
+      'Digitalización de Procesos'
+    ],
+    highlight: 'Soluciones integrales para el desarrollo territorial y administrativo',
+    image: 'consultoria-territorial-1.jpg',
+    images: [ 'consultoria-territorial-1.jpg', 'consultoria-territorial-2.jpg' ]
+  },
+  {
+    id: 'proyectos-vivienda-optimizacion',
+    title: 'Proyectos de Vivienda y Optimización Urbana',
+    category: 'Desarrollo Urbano Integral',
+    content: 'Desarrollo integral que combina proyectos de vivienda de interés social como "Miriam Madrid" con la modernización de redes de acueducto y alcantarillado, creando comunidades sostenibles con servicios públicos eficientes.',
     icon: 'location_city',
     features: [
-      'Planes de Ordenamiento Territorial',
-      'Estudios de Factibilidad',
-      'Fortalecimiento Institucional',
-      'Asesoría Normativa'
-    ],
-    highlight: 'Experiencia comprobada en desarrollo territorial',
-    image: 'consultoria-territorial.jpg',
-    images: ['consultoria-territorial-1.jpg', 'consultoria-territorial-2.jpg', 'consultoria-territorial-3.jpg']
-  },
-  {
-    id: 'interventoria-tecnica',
-    title: 'Interventoría Técnica',
-    category: 'Supervisión de Obras',
-    content: 'Supervisión técnica, contable, financiera y ambiental de obras públicas garantizando calidad y cumplimiento.',
-    icon: 'engineering',
-    features: [
-      'Control de Calidad',
-      'Supervisión Financiera',
-      'Seguimiento Ambiental',
-      'Informes Técnicos'
-    ],
-    highlight: 'Garantía de calidad en cada proyecto',
-    image: 'interventoria-tecnica.jpg',
-    images: ['interventoria-tecnica-1.jpg', 'interventoria-tecnica-2.jpg', 'interventoria-tecnica-3.jpg']
-  },
-  {
-    id: 'proyectos-vivienda',
-    title: 'Proyectos de Vivienda',
-    category: 'Vivienda de Interés Social',
-    content: 'Proyecto "Miriam Madrid" – 11 viviendas VIS con zonas verdes y espacio comunitario, mejorando la calidad de vida.',
-    icon: 'home',
-    features: [
+      'Vivienda de Interés Social',
       'Diseño Arquitectónico',
-      'Zonas Verdes',
-      'Espacios Comunitarios',
+      'Zonas Verdes y Espacios Comunitarios',
+      'Redes de Acueducto',
+      'Sistemas de Alcantarillado',
+      'Optimización Hidráulica',
+      'Modernización Tecnológica',
       'Sostenibilidad Ambiental'
     ],
-    highlight: 'Transformando comunidades con vivienda digna',
-    image: 'proyectos-vivienda.jpg',
-    images: ['proyectos-vivienda-1.jpg', 'proyectos-vivienda-2.jpg', 'proyectos-vivienda-3.jpg']
+    highlight: 'Desarrollo urbano integral: vivienda digna y servicios públicos eficientes',
+    image: 'proyectos_1.jpg',
+    images: [ 'proyectos_1.jpg', 'proyectos_2.jpg', 'proyectos_3.jpg', 'proyectos_4.jpg', 'proyectos_5.jpg', 'proyectos_6.jpg' ]
   },
   {
     id: 'infraestructura-vias',
@@ -66,40 +58,8 @@ export const SERVICES_DATA: ServiceCard[] = [
       'Señalización'
     ],
     highlight: 'Conectando territorios, generando oportunidades',
-    image: 'infraestructura-vias.jpg',
-    images: ['infraestructura-vias-1.jpg', 'infraestructura-vias-2.jpg', 'infraestructura-vias-3.jpg']
-  },
-  {
-    id: 'gestion-documental',
-    title: 'Gestión Documental',
-    category: 'Sistemas de Información',
-    content: 'Asesoría administrativa, sistemas de información y archivo para entidades territoriales optimizando procesos.',
-    icon: 'description',
-    features: [
-      'Organización Documental',
-      'Sistemas de Archivo',
-      'Digitalización',
-      'Capacitación'
-    ],
-    highlight: 'Modernizando la gestión administrativa',
-    image: 'gestion-documental.jpg',
-    images: ['gestion-documental-1.jpg', 'gestion-documental-2.jpg', 'gestion-documental-3.jpg']
-  },
-  {
-    id: 'optimizacion-urbana',
-    title: 'Optimización Urbana',
-    category: 'Servicios Públicos',
-    content: 'Diseño y modernización de redes de acueducto y alcantarillado para mejorar la prestación de servicios.',
-    icon: 'plumbing',
-    features: [
-      'Redes de Acueducto',
-      'Sistemas de Alcantarillado',
-      'Optimización Hidráulica',
-      'Modernización Tecnológica'
-    ],
-    highlight: 'Servicios públicos eficientes y sostenibles',
-    image: 'optimizacion-urbana.jpg',
-    images: ['optimizacion-urbana-1.jpg', 'optimizacion-urbana-2.jpg', 'optimizacion-urbana-3.jpg']
+    image: 'infraestructura_1.jpg',
+    images: [ 'infraestructura_1.jpg', 'infraestructura_2.jpg', 'infraestructura_3.jpg', 'infraestructura_4.jpg', 'infraestructura_5.jpg', 'infraestructura_6.jpg', 'infraestructura_7.jpg' ]
   }
 ];
 
@@ -143,5 +103,5 @@ export const getServicesByCategory = (category: string): ServiceCard[] => {
  * @returns Array of unique category strings
  */
 export const getServiceCategories = (): string[] => {
-  return [...new Set(SERVICES_DATA.map(service => service.category))];
+  return [ ...new Set(SERVICES_DATA.map(service => service.category)) ];
 };

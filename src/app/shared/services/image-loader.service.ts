@@ -4,8 +4,44 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ImageLoaderService {
-  private readonly SERVICES_IMAGE_PATH = 'assets/images/servicios/';
+  private readonly SERVICES_IMAGE_PATHS = {
+    asesoria: 'imagenes/portafolio_servicios/asesoria/',
+    vivienda: 'imagenes/portafolio_servicios/opti_urbana_y_vivienda/',
+    infraestructura: 'imagenes/portafolio_servicios/infraestructura_y_vias/'
+  };
+  
+  private readonly NETLIFY_IMAGE_PATHS = {
+    asesoria: 'https://donmatias-external-images.netlify.app/portafolio_servicios/asesoria/',
+    vivienda: 'https://donmatias-external-images.netlify.app/portafolio_servicios/opti_urbana_y_vivienda/',
+    infraestructura: 'https://donmatias-external-images.netlify.app/portafolio_servicios/infraestructura_y_vias/'
+  };
+  
   private readonly PLACEHOLDER_IMAGE = 'assets/images/placeholder-service.jpg';
+
+  private getImageCategory(imageName: string): 'asesoria' | 'vivienda' | 'infraestructura' {
+    // Images starting with 'proyectos_' or 'vivienda_' are in the vivienda folder
+    if (imageName.startsWith('proyectos_') || imageName.startsWith('vivienda_') || imageName.startsWith('optimizacion_')) {
+      return 'vivienda';
+    }
+    // Images starting with 'infraestructura_' are in the infraestructura folder
+    if (imageName.startsWith('infraestructura_')) {
+      return 'infraestructura';
+    }
+    // Default to asesoria folder
+    return 'asesoria';
+  }
+
+  getCurrentImagePath(imageName: string): string {
+    const hostname = window.location.hostname;
+    const isLocal = hostname === 'localhost' || hostname === '127.0.0.1' || hostname.startsWith('192.168');
+    const category = this.getImageCategory(imageName);
+    
+    if (isLocal) {
+      return `${this.SERVICES_IMAGE_PATHS[category]}${imageName}`;
+    } else {
+      return `${this.NETLIFY_IMAGE_PATHS[category]}${imageName}`;
+    }
+  }
 
   constructor() { }
 
@@ -18,7 +54,7 @@ export class ImageLoaderService {
     if (!imageName) {
       return this.PLACEHOLDER_IMAGE;
     }
-    return `${this.SERVICES_IMAGE_PATH}${imageName}`;
+    return this.getCurrentImagePath(imageName);
   }
 
   /**

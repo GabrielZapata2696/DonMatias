@@ -8,8 +8,8 @@ $gradient: linear-gradient(135deg, $primary 0%, $secondary 75%, $accent 100%);
 .service-grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 32px;
-  padding: 32px 20px;
+  gap: 2rem; // Adjusted gap for cleaner layout
+  padding: 2rem 1.25rem; // Adjusted padding for cleaner layout
   max-width: 1200px;
   margin: 0 auto;
 
@@ -22,7 +22,7 @@ $gradient: linear-gradient(135deg, $primary 0%, $secondary 75%, $accent 100%);
 // Simple Card Styles
 .service-card-simple {
   background: #fff;
-  border-radius: 16px;
+  border-radius: 1rem; // Adjusted border radius for alignment with MD3
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
@@ -171,7 +171,7 @@ $gradient: linear-gradient(135deg, $primary 0%, $secondary 75%, $accent 100%);
 
 // Header
 .card-header-simple {
-  padding: 28px 28px 20px;
+  padding: 1.75rem 1.75rem 1.25rem; // Converted to rem units
   display: flex;
   align-items: flex-start;
   gap: 20px;
@@ -233,7 +233,7 @@ $gradient: linear-gradient(135deg, $primary 0%, $secondary 75%, $accent 100%);
 
 // Content
 .card-content-simple {
-  padding: 0 28px 24px;
+  padding: 0 1.75rem 1.5rem; // Converted to rem units
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -251,7 +251,7 @@ $gradient: linear-gradient(135deg, $primary 0%, $secondary 75%, $accent 100%);
 
 // Actions
 .card-actions-simple {
-  padding: 20px 28px 28px;
+  padding: 1.25rem 1.75rem 1.75rem; // Converted to rem units
   display: flex;
   justify-content: center;
   border-top: 1px solid #f0f0f0;

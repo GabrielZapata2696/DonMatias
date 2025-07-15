@@ -67,7 +67,7 @@
         (click)="goToImage(i)"
       >
         <img 
-          [src]="imageBasePath + image" 
+          [src]="getImagePath(image)" 
           [alt]="title + ' - Thumbnail ' + (i + 1)"
           class="thumbnail-image"
           (error)="onImageError($event)"

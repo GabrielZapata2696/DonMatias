@@ -25,10 +25,7 @@
               {
                 "glob": "**/*",
                 "input": "public",
-                "output": "",
-                "ignore": [
-                  "imagenes/**/*"
-                ]
+                "output": ""
               },
               {
                 "glob": "**/*",
@@ -48,10 +45,7 @@
                 {
                   "glob": "**/*",
                   "input": "public",
-                  "output": "",
-                  "ignore": [
-                    "imagenes/**/*"
-                  ]
+                  "output": ""
                 }
               ],
               "budgets": [
