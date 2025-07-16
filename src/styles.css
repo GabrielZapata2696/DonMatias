@@ -192,6 +192,50 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+/* Material Icons Fix */
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga';
+}
+
+/* Angular Material mat-icon fix */
+mat-icon {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'liga';
+}
+
+/* Ensure mat-icon has proper sizing */
+mat-icon.mat-icon {
+  width: auto;
+  height: auto;
+  font-size: inherit;
+}
+
 /* Fullscreen Dialog Styles */
 .fullscreen-dialog .mat-mdc-dialog-container {
   border-radius: 0 !important;

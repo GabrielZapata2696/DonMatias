@@ -31,6 +31,11 @@
                 "glob": "**/*",
                 "input": "external-images",
                 "output": "external-images"
+              },
+              {
+                "glob": "**/*",
+                "input": "node_modules/pdfjs-dist/build",
+                "output": "assets/pdf"
               }
             ],
             "styles": [
@@ -46,6 +51,11 @@
                   "glob": "**/*",
                   "input": "public",
                   "output": ""
+                },
+                {
+                  "glob": "**/*",
+                  "input": "node_modules/pdfjs-dist/build",
+                  "output": "assets/pdf"
                 }
               ],
               "budgets": [

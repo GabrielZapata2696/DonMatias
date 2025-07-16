@@ -1,8 +1,26 @@
 /* Using global .page-container and .page-header classes but narrower width */
 .contratacion-container {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 15px auto;
   padding: 0 20px;
+}
+
+.contratacion-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.contratacion-header h1 {
+  color: #3f51b5;
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.contratacion-header p {
+  color: #666;
+  font-size: 1.1rem;
+  margin: 0;
 }
 
 mat-accordion {
@@ -12,79 +30,404 @@ mat-accordion {
 
 mat-expansion-panel {
   margin-bottom: 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 mat-panel-title {
   color: #3f51b5;
   font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.document-icon {
+  color: #3f51b5;
 }
 
 mat-panel-description {
   color: #666;
+  display: flex;
+  align-items: center;
 }
 
-.contrato-content {
+.document-status {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.9rem;
+}
+
+.document-status.loading {
+  color: #ff9800;
+}
+
+.document-status.error {
+  color: #f44336;
+}
+
+.document-content {
   padding: 20px 0;
 }
 
-.contrato-content h3 {
-  color: #333;
+/* PDF Controls */
+.pdf-controls {
+  display: flex;
+  gap: 12px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
-.features-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 30px 0;
-}
-
-.features-list li {
+.pdf-controls button {
   display: flex;
   align-items: center;
-  margin-bottom: 12px;
-  color: #555;
+  gap: 8px;
 }
 
-.features-list mat-icon {
-  color: #4caf50;
-  margin-right: 8px;
+.open-in-tab-btn mat-icon {
+  font-size: 18px;
 }
 
-.price-section {
-  text-align: center;
-  margin: 30px 0;
+.retry-btn mat-icon {
+  font-size: 18px;
 }
 
-.price-section h2 {
-  color: #3f51b5;
-  font-size: 2.5rem;
-  font-weight: 500;
-}
-
-.action-buttons {
+/* PDF Loading */
+.pdf-loading {
   display: flex;
-  gap: 16px;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.pdf-loading p {
+  margin-top: 16px;
+  color: #666;
+  font-size: 1rem;
+}
+
+/* PDF Error */
+.pdf-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+  text-align: center;
+  color: #f44336;
+}
+
+.pdf-error mat-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.pdf-error h3 {
+  color: #f44336;
+  margin: 0 0 12px 0;
+  font-size: 1.2rem;
+}
+
+.pdf-error p {
+  color: #666;
+  margin: 0 0 20px 0;
+  max-width: 400px;
+  line-height: 1.5;
+}
+
+.error-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
-.action-buttons button {
-  min-width: 160px;
+.error-actions button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.action-buttons mat-icon {
-  margin-right: 8px;
+/* PDF Viewer Container */
+.pdf-viewer-container {
+  width: 100%;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background: #f5f5f5;
 }
 
-@media (max-width: 600px) {
+/* PDF Viewer Specific Styles */
+::ng-deep .pdf-viewer-container pdf-viewer {
+  display: block;
+  border: none;
+}
+
+::ng-deep .pdf-viewer-container .ng2-pdf-viewer-container {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+::ng-deep .pdf-viewer-container .pdfViewer {
+  padding: 10px;
+}
+
+::ng-deep .pdf-viewer-container .page {
+  margin: 0 auto 10px auto;
+  border: 1px solid #d0d0d0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contratacion-container {
+    max-width: 100%;
+    padding: 0 15px;
+  }
+
   .contratacion-header h1 {
     font-size: 2rem;
   }
 
-  .action-buttons {
+  .pdf-controls {
     flex-direction: column;
   }
 
-  .action-buttons button {
+  .pdf-controls button {
     width: 100%;
+    justify-content: center;
+  }
+
+  .pdf-viewer-container {
+    height: 500px;
+  }
+
+  ::ng-deep .pdf-viewer-container pdf-viewer {
+    height: 500px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contratacion-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .pdf-viewer-container {
+    height: 400px;
+  }
+
+  ::ng-deep .pdf-viewer-container pdf-viewer {
+    height: 400px;
+  }
+
+  .pdf-loading,
+  .pdf-error {
+    padding: 20px 10px;
+  }
+}
+
+/* PDF Info Section */
+.pdf-info {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.pdf-info h3 {
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 1.3rem;
+}
+
+.pdf-info p {
+  color: #666;
+  margin: 0;
+}
+
+/* PDF Viewing Options */
+.pdf-viewing-options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.option-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.option-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #3f51b5;
+}
+
+.option-icon {
+  font-size: 48px;
+  color: #3f51b5;
+  margin-bottom: 16px;
+}
+
+.option-card h4 {
+  color: #333;
+  margin: 0 0 12px 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.option-card p {
+  color: #666;
+  margin: 0 0 20px 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.option-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 500;
+}
+
+.option-btn mat-icon {
+  font-size: 18px;
+}
+
+/* Viewer Selection Buttons */
+.viewer-selection {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.viewer-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  min-width: 70px;
+  transition: all 0.3s ease;
+}
+
+.viewer-btn mat-icon {
+  font-size: 16px;
+}
+
+.download-btn {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Responsive Design for Options */
+@media (max-width: 768px) {
+  .pdf-viewing-options {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .option-card {
+    padding: 20px;
+  }
+  
+  .option-icon {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pdf-viewing-options {
+    gap: 12px;
+  }
+  
+  .option-card {
+    padding: 16px;
+  }
+  
+  .option-icon {
+    font-size: 36px;
+  }
+}
+
+/* Inline PDF Viewer */
+.inline-pdf-viewer {
+  margin-top: 30px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-viewer-header {
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.viewer-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.viewer-type-indicator {
+  background-color: #e3f2fd;
+  color: #1976d2;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.pdf-viewer-header h4 {
+  margin: 0;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.pdf-iframe-container {
+  position: relative;
+  background-color: #f9f9f9;
+}
+
+.pdf-iframe-container iframe {
+  border: none;
+  display: block;
+  background: white;
+}
+
+/* Responsive PDF Viewer */
+@media (max-width: 768px) {
+  .pdf-iframe-container iframe {
+    height: 500px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pdf-iframe-container iframe {
+    height: 400px;
+  }
+  
+  .pdf-viewer-header {
+    padding: 8px 12px;
+  }
+  
+  .pdf-viewer-header h4 {
+    font-size: 0.9rem;
   }
 }
