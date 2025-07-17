@@ -1,0 +1,56 @@
+<div class="socios-container">
+  <!-- <div class="section-header">
+    <h2>Socios Constitución</h2>
+    <p class="section-subtitle">Conoce a nuestros socios fundadores</p>
+  </div> -->
+
+  <div class="partners-grid">
+    <mat-card
+      *ngFor="let partner of partners; trackBy: trackByPartner"
+      class="partner-card"
+      [@fadeIn]
+    >
+      <div class="card-image-container">
+        <img
+          [src]="partner.image"
+          [alt]="partner.alt"
+          class="partner-image"
+          (load)="onImageLoad(partner)"
+          (error)="onImageError($event, partner)"
+          [style.display]="partner.imageError ? 'none' : 'block'"
+        />
+        <div *ngIf="partner.imageError" class="image-placeholder">
+          <div class="placeholder-content">
+            <span class="placeholder-text">Imagen no disponible</span>
+          </div>
+        </div>
+
+        <!-- Logo overlay -->
+        <div class="logo-container" *ngIf="!partner.imageError">
+          <img
+            [src]="partner.logo"
+            [alt]="partner.logoAlt"
+            class="partner-logo"
+            (load)="onLogoLoad(partner)"
+            (error)="onLogoError($event, partner)"
+            [style.display]="partner.logoError ? 'none' : 'block'"
+          />
+        </div>
+      </div>
+
+      <mat-card-header class="card-header">
+        <mat-card-title class="partner-title">{{
+          partner.title
+        }}</mat-card-title>
+        <mat-card-subtitle class="partner-subtitle">{{
+          partner.subtitle
+        }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content class="card-content">
+        <p class="main-text">{{ partner.mainText }}</p>
+        <p class="secondary-text">{{ partner.secondaryText }}</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

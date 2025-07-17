@@ -5,7 +5,7 @@ import { ContratacionComponent } from './pages/contratacion.component';
 @NgModule({
   imports: [
     ContratacionRoutingModule,
-    ContratacionComponent
+    ContratacionComponent,
   ]
 })
 export class ContratacionModule { }

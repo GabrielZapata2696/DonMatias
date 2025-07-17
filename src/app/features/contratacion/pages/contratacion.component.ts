@@ -3,19 +3,25 @@ import { CommonModule } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { PdfDocumentService, ContractDocument } from '../services/pdf-document.service';
+import { SociosConstitucionComponent } from '../components/socios-constitucion/socios-constitucion.component';
 
 @Component({
   selector: 'app-contratacion',
   templateUrl: './contratacion.component.html',
-  styleUrls: ['./contratacion.component.css'],
+  styleUrls: [ './contratacion.component.css' ],
   standalone: true,
   imports: [
     CommonModule,
     MatExpansionModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatTooltipModule,
+    SociosConstitucionComponent,
   ]
 })
 export class ContratacionComponent {
@@ -34,16 +40,37 @@ export class ContratacionComponent {
       document.loading = true;
       document.error = false;
       console.log('Loading PDF:', document.url);
-      
-      // Set a timeout to prevent infinite loading
-      setTimeout(() => {
-        if (document.loading) {
-          console.error('PDF loading timeout for:', document.url);
+
+      // Check if PDF is accessible first
+      this.pdfDocumentService.checkPdfAccessibility(document.url)
+        .then(accessible => {
+          if (accessible) {
+            console.log('PDF is accessible:', document.url);
+            // Let the iframe load normally
+            this.startLoadingTimeout(document);
+          } else {
+            console.error('PDF is not accessible:', document.url);
+            document.loading = false;
+            document.error = true;
+          }
+        })
+        .catch(error => {
+          console.error('Error checking PDF accessibility:', error);
           document.loading = false;
           document.error = true;
-        }
-      }, 10000); // 10 seconds timeout
+        });
     }
+  }
+
+  private startLoadingTimeout(document: ContractDocument): void {
+    // Set a timeout to prevent infinite loading
+    setTimeout(() => {
+      if (document.loading) {
+        console.error('PDF loading timeout for:', document.url);
+        document.loading = false;
+        document.error = true;
+      }
+    }, 8000); // 8 seconds timeout
   }
 
   onPdfLoadComplete(document: ContractDocument): void {
@@ -87,7 +114,7 @@ export class ContratacionComponent {
   }
 
   getGoogleDocsUrl(url: string): string {
-    // Google Docs viewer as fallback
+    // Google Docs viewer as fallback - Netlify URLs are already complete
     return `https://docs.google.com/viewer?url=${encodeURIComponent(url)}&embedded=true`;
   }
 
@@ -113,5 +140,10 @@ export class ContratacionComponent {
 
   trackByDocument(index: number, document: ContractDocument): string {
     return document.title;
+  }
+
+  getSafeUrl(url: string): SafeResourceUrl {
+    // For Netlify URLs, they're already complete URLs with https
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
 }

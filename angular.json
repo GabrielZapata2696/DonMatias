@@ -29,8 +29,13 @@
               },
               {
                 "glob": "**/*",
-                "input": "external-images",
-                "output": "external-images"
+                "input": "src/assets",
+                "output": "assets"
+              },
+              {
+                "glob": "**/*",
+                "input": "donmatias-external-images",
+                "output": "donmatias-external-images"
               },
               {
                 "glob": "**/*",
@@ -51,6 +56,16 @@
                   "glob": "**/*",
                   "input": "public",
                   "output": ""
+                },
+                {
+                  "glob": "**/*",
+                  "input": "src/assets",
+                  "output": "assets"
+                },
+                {
+                  "glob": "**/*",
+                  "input": "donmatias-external-images",
+                  "output": "donmatias-external-images"
                 },
                 {
                   "glob": "**/*",

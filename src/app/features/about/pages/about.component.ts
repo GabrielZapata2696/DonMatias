@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
+import { AllySliderComponent } from '../../../shared/components/ally-slider/ally-slider.component';
+import { ImageService } from '../../../shared/services/image.service';
 
 @Component({
   selector: 'app-about',
@@ -13,51 +16,68 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     MatCardModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule,
+    AllySliderComponent
   ]
 })
 export class AboutComponent {
+  textDescripcion2 = ` Nuestra trayectoria respalda lo que hacemos: somos un Fondo con resultados medibles, visión transformadora y un claro enfoque territorial.
+Estamos listos para ser su aliado estratégico y construir juntos soluciones reales que impacten positivamente a las comunidades.`;
+
+  constructor(private imageService: ImageService) {}
+
   teamMembers = [
     {
-      name: 'Ana García',
-      position: 'CEO & Fundadora',
-      bio: 'Con más de 15 años de experiencia en la industria, Ana lidera nuestra empresa con visión y dedicación.',
-      image: 'assets/team/ana-garcia.jpg'
+      name: 'FOVIS',
+      position: 'Fondo de Vivienda de Donmatías',
+      bio: 'Especialistas en desarrollo de proyectos de vivienda de interés social y reforma urbana, con más de 30 años de experiencia transformando comunidades y mejorando la calidad de vida urbana.',
+      image: 'assets/team/fovis.jpg'
     },
     {
-      name: 'Carlos Rodríguez',
-      position: 'Director de Tecnología',
-      bio: 'Carlos aporta 12 años de experiencia técnica y liderazgo en innovación a nuestro equipo.',
-      image: 'assets/team/carlos-rodriguez.jpg'
+      name: 'SERVIDONMATÍAS',
+      position: 'Empresa de Servicios Públicos',
+      bio: 'Expertos en agua potable y saneamiento básico, promoviendo la efectiva prestación de servicios públicos esenciales y el cuidado responsable de los recursos naturales.',
+      image: 'assets/team/servidonmatias.jpg'
     },
     {
-      name: 'Laura Martínez',
-      position: 'Directora de Marketing',
-      bio: 'Laura ha transformado nuestra estrategia de marketing con su enfoque creativo y profundo conocimiento del sector.',
-      image: 'assets/team/laura-martinez.jpg'
+      name: 'Equipo Técnico',
+      position: 'Profesionales Especializados',
+      bio: 'Equipo multidisciplinario con alta capacidad técnica, experiencia comprobada y profesionalismo excepcional para ejecutar proyectos complejos de desarrollo territorial.',
+      image: 'assets/team/equipo-tecnico.jpg'
     }
   ];
 
   companyValues = [
     {
-      icon: 'lightbulb',
-      title: 'Innovación',
-      description: 'Constantemente buscamos nuevas formas de superar los límites y ofrecer soluciones innovadoras.'
+      icon: 'verified',
+      title: 'Transparencia',
+      description: 'Rendimos cuentas, generamos confianza.'
     },
     {
-      icon: 'handshake',
-      title: 'Integridad',
-      description: 'Mantenemos los más altos estándares de honestidad y transparencia en todo lo que hacemos.'
+      icon: 'speed',
+      title: 'Eficiencia',
+      description: 'Hacemos que cada recurso cuente.'
     },
     {
-      icon: 'groups',
-      title: 'Colaboración',
-      description: 'Creemos en el poder del trabajo en equipo y el éxito compartido.'
+      icon: 'schedule',
+      title: 'Celeridad',
+      description: 'Damos respuestas oportunas con alto nivel técnico.'
     },
     {
-      icon: 'star',
-      title: 'Excelencia',
-      description: 'Nos esforzamos por alcanzar la excelencia en cada aspecto de nuestro trabajo.'
+      icon: 'assignment_turned_in',
+      title: 'Responsabilidad',
+      description: 'Cumplimos con excelencia y compromiso.'
+    },
+    {
+      icon: 'settings',
+      title: 'Gestión',
+      description: 'Movilizamos capacidades, recursos y resultados.'
+    },
+    {
+      icon: 'favorite',
+      title: 'Respeto',
+      description: 'Trabajamos por y para las comunidades.'
     }
   ];
 }

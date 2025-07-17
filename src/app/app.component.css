@@ -38,8 +38,8 @@ app-header {
   flex: 1;
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 0px 20px;
+  margin: auto;
+  padding: 0 15px;
   position: relative;
   z-index: 2;
   min-height: 200px; /* Ensure minimum content height */
@@ -74,7 +74,7 @@ app-footer {
   }
 
   .main-content {
-    padding: 10px;
+    padding: 0 10px;
     margin-bottom: 20px;
   }
 }

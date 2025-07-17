@@ -19,39 +19,14 @@ export class PdfDocumentService {
   
   private readonly PDF_DOCUMENTS = [
     {
-      filename: 'CONTRATACIÓN EDTD 1.pdf',
-      title: 'Contratación EDTD - Documento 1',
-      description: 'Términos y condiciones para contratación EDTD - Parte 1'
+      filename: 'CONTRATACIÓN EDTD.pdf',
+      title: 'Contratación EDTD',
+      description: 'Términos y condiciones para contratación EDTD'
     },
     {
-      filename: 'CONTRATACIÓN EDTD 2.pdf',
-      title: 'Contratación EDTD - Documento 2',
-      description: 'Términos y condiciones para contratación EDTD - Parte 2'
-    },
-    {
-      filename: 'CONTRATACIÓN EDTD 3.pdf',
-      title: 'Contratación EDTD - Documento 3',
-      description: 'Términos y condiciones para contratación EDTD - Parte 3'
-    },
-    {
-      filename: 'CONTRATACIÓN EDTD 4.pdf',
-      title: 'Contratación EDTD - Documento 4',
-      description: 'Términos y condiciones para contratación EDTD - Parte 4'
-    },
-    {
-      filename: 'CONTRATACIÓN FOVIS 1.pdf',
-      title: 'Contratación FOVIS - Documento 1',
-      description: 'Términos y condiciones para contratación FOVIS - Parte 1'
-    },
-    {
-      filename: 'CONTRATACIÓN FOVIS 2.pdf',
-      title: 'Contratación FOVIS - Documento 2',
-      description: 'Términos y condiciones para contratación FOVIS - Parte 2'
-    },
-    {
-      filename: 'CONTRATACIÓN FOVIS 3.pdf',
-      title: 'Contratación FOVIS - Documento 3',
-      description: 'Términos y condiciones para contratación FOVIS - Parte 3'
+      filename: 'CONTRATACIÓN FOVIS.pdf',
+      title: 'Contratación FOVIS',
+      description: 'Términos y condiciones para contratación FOVIS'
     }
   ];
 

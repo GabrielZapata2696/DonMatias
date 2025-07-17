@@ -1,17 +1,27 @@
 <div class="contratacion-container">
   <header class="contratacion-header">
-    <h1>Documentos de Contratación</h1>
-    <p>Explore y revise todos los documentos relacionados con la contratación</p>
+    <h2>Socios de Constitución</h2>
+    <p class="category">Conoce a nuestros socios</p>
   </header>
 
+  <!-- Socios Constitución Component -->
+  <app-socios-constitucion></app-socios-constitucion>
+
+  <header class="contratacion-header">
+    <h2>Documentos de Contratación</h2>
+    <p class="category">
+      Explore y revise todos los documentos relacionados con la contratación
+    </p>
+  </header>
   <mat-accordion>
-    <mat-expansion-panel 
-      *ngFor="let document of documents; trackBy: trackByDocument">
-      
+    <mat-expansion-panel
+      *ngFor="let document of documents; trackBy: trackByDocument"
+      (opened)="onPanelOpened(document)"
+    >
       <mat-expansion-panel-header>
         <mat-panel-title>
           <mat-icon class="document-icon">description</mat-icon>
-          {{document.title}}
+          {{ document.title }}
         </mat-panel-title>
         <mat-panel-description>
           <span class="document-status">
@@ -22,71 +32,38 @@
       </mat-expansion-panel-header>
 
       <div class="document-content">
-        <div class="pdf-info">
-          <h3>Opciones para ver el documento:</h3>
-          <p>Elija cómo desea ver este documento PDF:</p>
-        </div>
-
-        <!-- PDF Viewing Options -->
-        <div class="pdf-viewing-options">
+        <h3>Visualizar documento:</h3>
+        <div class="option-cards">
           <div class="option-card">
             <mat-icon class="option-icon">open_in_new</mat-icon>
             <h4>Abrir en Nueva Pestaña</h4>
             <p>Abre el PDF directamente en una nueva pestaña del navegador</p>
-            <button 
-              mat-raised-button 
-              color="primary" 
+            <button
+              mat-raised-button
+              color="primary"
               (click)="openPdfInNewTab(document.url)"
-              class="option-btn">
+              class="option-btn"
+            >
               <mat-icon>open_in_new</mat-icon>
               Abrir PDF
             </button>
           </div>
 
           <div class="option-card">
-            <mat-icon class="option-icon">visibility</mat-icon>
-            <h4>Ver con Google Docs</h4>
-            <p>Utiliza el visor de Google Docs para mostrar el PDF</p>
-            <button 
-              mat-raised-button 
-              color="accent" 
-              (click)="openPdfInNewTab(getGoogleDocsUrl(document.url))"
-              class="option-btn">
-              <mat-icon>visibility</mat-icon>
-              Ver con Google
-            </button>
-          </div>
-
-          <div class="option-card">
-            <mat-icon class="option-icon">article</mat-icon>
-            <h4>Ver con Mozilla PDF.js</h4>
-            <p>Utiliza el visor de Mozilla para mostrar el PDF</p>
-            <button 
-              mat-raised-button 
-              color="warn" 
-              (click)="openPdfInNewTab(getMozillaUrl(document.url))"
-              class="option-btn">
-              <mat-icon>article</mat-icon>
-              Ver con Mozilla
-            </button>
-          </div>
-
-
-          <div class="option-card">
             <mat-icon class="option-icon">download</mat-icon>
             <h4>Descargar PDF</h4>
             <p>Descarga el archivo PDF a tu dispositivo</p>
-            <a 
-              [href]="document.url" 
+            <a
+              [href]="document.url"
               [download]="document.title + '.pdf'"
-              mat-raised-button 
-              class="option-btn download-btn">
+              mat-raised-button
+              class="option-btn download-btn"
+            >
               <mat-icon>download</mat-icon>
               Descargar
             </a>
           </div>
         </div>
-
       </div>
     </mat-expansion-panel>
   </mat-accordion>
