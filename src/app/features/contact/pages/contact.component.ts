@@ -13,7 +13,7 @@ import { EMAILJS_CONFIG } from '../config/emailjs.config';
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css'],
+  styleUrls: [ './contact.component.css' ],
   standalone: true,
   imports: [
     CommonModule,
@@ -29,38 +29,38 @@ import { EMAILJS_CONFIG } from '../config/emailjs.config';
 export class ContactComponent {
   contactForm: FormGroup;
   isSubmitting = false;
-  
+
   // EmailJS configuration
   private readonly SERVICE_ID = EMAILJS_CONFIG.SERVICE_ID;
   private readonly TEMPLATE_ID = EMAILJS_CONFIG.TEMPLATE_ID;
   private readonly PUBLIC_KEY = EMAILJS_CONFIG.PUBLIC_KEY;
-  
+
   contactInfo = [
     {
       icon: 'location_on',
       title: 'Nuestra Ubicación',
-      details: ['Oficina: Calle 9 sur # 79C - 139', 'Medellín, Antioquia']
+      details: [ 'Oficina: Calle 9 sur # 79C - 139', 'Medellín, Antioquia' ]
     },
     {
       icon: 'phone',
       title: 'Teléfono',
-      details: ['+57 313-681-7407', 'Lun-Vie, 8am-5pm COT']
+      details: [ '+57 313-681-7407', '' ]
     },
     {
       icon: 'email',
       title: 'Correo Electrónico',
-      details: ['Empresadedesarrollotorritorial@gmail.com']
+      details: [ 'Empresadedesarrollotorritorial@gmail.com' ]
     }
   ];
 
   constructor(private fb: FormBuilder, private snackBar: MatSnackBar) {
     this.contactForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(3)]],
-      email: ['', [Validators.required, Validators.email]],
-      subject: ['', Validators.required],
-      message: ['', [Validators.required, Validators.minLength(10)]]
+      name: [ '', [ Validators.required, Validators.minLength(3) ] ],
+      email: [ '', [ Validators.required, Validators.email ] ],
+      subject: [ '', Validators.required ],
+      message: [ '', [ Validators.required, Validators.minLength(10) ] ]
     });
-    
+
     // Initialize EmailJS
     emailjs.init(this.PUBLIC_KEY);
   }
@@ -68,7 +68,7 @@ export class ContactComponent {
   async onSubmit() {
     if (this.contactForm.valid && !this.isSubmitting) {
       this.isSubmitting = true;
-      
+
       try {
         // Prepare the email parameters
         const emailParams = {
@@ -92,23 +92,23 @@ export class ContactComponent {
           'Cerrar',
           {
             duration: 5000,
-            panelClass: ['success-snackbar']
+            panelClass: [ 'success-snackbar' ]
           }
         );
 
         // Reset form
         this.contactForm.reset();
-        
+
       } catch (error) {
         console.error('Error sending email:', error);
-        
+
         // Show error message
         this.snackBar.open(
           'Error al enviar el mensaje. Por favor, inténtalo de nuevo.',
           'Cerrar',
           {
             duration: 5000,
-            panelClass: ['error-snackbar']
+            panelClass: [ 'error-snackbar' ]
           }
         );
       } finally {
