@@ -1,8 +1,15 @@
 export const environment = {
   production: true,
-  // For production: replace with your Netlify static deploy URL
-  // Example: 'https://your-netlify-images.netlify.app'
-  // imageBaseUrl: 'https://your-netlify-images.netlify.app',
   imageBaseUrl: 'https://donmatias-external-images.netlify.app',
-  // This will be replaced with your actual Netlify URL when ready
+  
+  // EmailJS Configuration - REPLACE WITH YOUR ACTUAL PRODUCTION VALUES
+  // Get these from your EmailJS dashboard at https://www.emailjs.com/
+  emailjs: {
+    serviceId: 'YOUR_PRODUCTION_SERVICE_ID',
+    templateId: 'YOUR_PRODUCTION_TEMPLATE_ID',
+    publicKey: 'YOUR_PRODUCTION_PUBLIC_KEY'
+  }
 };
+
+// IMPORTANT: Before deploying to production, replace the placeholder values above
+// with your actual EmailJS credentials from https://www.emailjs.com/

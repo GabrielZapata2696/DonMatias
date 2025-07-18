@@ -1,92 +1,158 @@
 <div class="homepage">
   <div class="about-container">
     <div class="about-content">
-    <section class="company-story">
-      <div class="story-header">
-        <h1>¿Quiénes somos?</h1>
-        <p>Conoce nuestra identidad y propósito como entidad de desarrollo territorial</p>
-      </div>
-      <mat-card>
-        <div class="story-content">
-          <div class="story-text">
-            <div class="card-header">
-              <h2>Empresa de Desarrollo Territorial</h2>
-              <h3 class="card-subtitle">DONMATÍAS | Transformando Territorios</h3>
-              <p class="card-tagline">Impulsamos el progreso. Transformamos realidades.</p>
+      <section class="company-story">
+        <div class="story-header">
+          <h1>¿Quiénes somos?</h1>
+          <p>
+            Conoce nuestra identidad y propósito como entidad de desarrollo
+            territorial
+          </p>
+        </div>
+        <mat-card>
+          <div class="story-content">
+            <div class="story-text">
+              <div class="card-header">
+                <h2>Empresa de Desarrollo Territorial</h2>
+                <h3 class="card-subtitle">
+                  DONMATÍAS | Transformando Territorios
+                </h3>
+                <p class="card-tagline">
+                  Impulsamos el progreso. Transformamos realidades.
+                </p>
+              </div>
+              <p>
+                Somos una entidad pública estratégica, conformada por la ESP
+                Servidonmatías S.A.S. y el Fondo de Vivienda de Donmatías -
+                FOVIS, que lidera proyectos de desarrollo territorial en
+                Antioquia y Colombia.
+              </p>
+              <p>
+                Transformamos necesidades en soluciones sostenibles,
+                construyendo bienestar y confianza mediante una gestión
+                profesional y transparente.
+              </p>
             </div>
-            <p>
-              Somos una entidad pública estratégica, conformada por la ESP
-              Servidonmatías S.A.S. y el Fondo de Vivienda de Donmatías - FOVIS,
-              que lidera proyectos de desarrollo territorial en Antioquia y
-              Colombia.
-            </p>
-            <p>
-              Transformamos necesidades en soluciones sostenibles, construyendo
-              bienestar y confianza mediante una gestión profesional y
-              transparente.
-            </p>
+            <div class="story-image">
+              <img
+                [src]="getImageUrl('nosotros/desarrollo_territorial.jpg')"
+                alt="Desarrollo Territorial"
+                class="story-image-img"
+                (error)="onImageError($event)"
+              />
+            </div>
           </div>
-          <div class="story-image">
-            <div class="placeholder-image">Desarrollo Territorial</div>
+        </mat-card>
+      </section>
+
+      <section class="mission-vision">
+        <div class="mission-vision-header">
+          <h1>Misión y Visión</h1>
+          <p>
+            Nuestro compromiso con la excelencia y la transformación territorial
+          </p>
+        </div>
+        <div class="mission-vision-grid">
+          <mat-card class="mission-card">
+            <div class="icon-container">
+              <mat-icon class="section-icon">flag</mat-icon>
+            </div>
+            <h3>Misión</h3>
+            <p>
+              Ser el referente en Colombia en ejecución de proyectos
+              territoriales, reconocidos por la excelencia, la transparencia y
+              la capacidad de transformar territorios con resultados tangibles,
+              innovadores y sostenibles.
+            </p>
+          </mat-card>
+          <mat-card class="vision-card">
+            <div class="icon-container">
+              <mat-icon class="section-icon">visibility</mat-icon>
+            </div>
+            <h3>Visión</h3>
+            <p>
+              Gestionar y ejecutar proyectos estratégicos con altos estándares
+              técnicos, financieros y sociales, que fortalezcan las capacidades
+              institucionales, mejoren la calidad de vida de la población y
+              contribuyan al cierre de brechas territoriales.
+            </p>
+          </mat-card>
+        </div>
+      </section>
+
+      <section class="values-section">
+        <div class="values-header">
+          <h1>Nuestros Valores</h1>
+          <p>
+            Los principios que guían nuestro trabajo y compromiso con la
+            comunidad
+          </p>
+        </div>
+        <div class="values-grid">
+          <mat-card class="value-card" *ngFor="let value of companyValues">
+            <div class="icon-container">
+              <mat-icon class="value-icon">{{ value.icon }}</mat-icon>
+            </div>
+            <div class="value-content">
+              <h3>{{ value.title }}</h3>
+              <p>{{ value.description }}</p>
+            </div>
+          </mat-card>
+        </div>
+      </section>
+
+      <section class="benefits-section">
+        <div class="benefits-header">
+          <h1>¿Por qué asociarse con nosotros?</h1>
+          <p>
+            Conoce las ventajas de trabajar con una empresa de desarrollo
+            territorial líder
+          </p>
+        </div>
+
+        <div class="benefits-container">
+          <div
+            class="benefit-item"
+            *ngFor="let benefit of benefits; let i = index"
+          >
+            <!-- Image on left, content on right for even items -->
+            <div
+              class="benefit-content"
+              [class.image-left]="isEven(i)"
+              [class.image-right]="!isEven(i)"
+            >
+              <mat-card
+                class="benefit-image-card"
+                [class.order-1]="isEven(i)"
+                [class.order-2]="!isEven(i)"
+              >
+                <img
+                  [src]="getImageUrl(benefit.image)"
+                  [alt]="benefit.title"
+                  class="benefit-image"
+                  (error)="onImageError($event)"
+                />
+              </mat-card>
+
+              <mat-card
+                class="benefit-text-card"
+                [class.order-2]="isEven(i)"
+                [class.order-1]="!isEven(i)"
+              >
+                <mat-card-title class="benefit-title">
+                  <span class="benefit-number">{{ benefit.number }}</span>
+                  <span class="benefit-title">{{ benefit.title }}</span>
+                </mat-card-title>
+                <mat-card-content>
+                  <p class="benefit-description">{{ benefit.description }}</p>
+                </mat-card-content>
+              </mat-card>
+            </div>
           </div>
         </div>
-      </mat-card>
-    </section>
+      </section>
 
-    <section class="mission-vision">
-      <div class="mission-vision-header">
-        <h1>Misión y Visión</h1>
-        <p>
-          Nuestro compromiso con la excelencia y la transformación territorial
-        </p>
-      </div>
-      <div class="mission-vision-grid">
-        <mat-card class="mission-card">
-          <div class="icon-container">
-            <mat-icon class="section-icon">flag</mat-icon>
-          </div>
-          <h3>Misión</h3>
-          <p>
-            Ser el referente en Colombia en ejecución de proyectos
-            territoriales, reconocidos por la excelencia, la transparencia y la
-            capacidad de transformar territorios con resultados tangibles,
-            innovadores y sostenibles.
-          </p>
-        </mat-card>
-        <mat-card class="vision-card">
-          <div class="icon-container">
-            <mat-icon class="section-icon">visibility</mat-icon>
-          </div>
-          <h3>Visión</h3>
-          <p>
-            Gestionar y ejecutar proyectos estratégicos con altos estándares
-            técnicos, financieros y sociales, que fortalezcan las capacidades
-            institucionales, mejoren la calidad de vida de la población y
-            contribuyan al cierre de brechas territoriales.
-          </p>
-        </mat-card>
-      </div>
-    </section>
-
-    <section class="values-section">
-      <div class="values-header">
-        <h1>Nuestros Valores</h1>
-        <p>
-          Los principios que guían nuestro trabajo y compromiso con la comunidad
-        </p>
-      </div>
-      <div class="values-grid">
-        <mat-card class="value-card" *ngFor="let value of companyValues">
-          <div class="icon-container">
-            <mat-icon class="value-icon">{{ value.icon }}</mat-icon>
-          </div>
-          <h3>{{ value.title }}</h3>
-          <p>{{ value.description }}</p>
-        </mat-card>
-      </div>
-    </section>
-
-    <section class="team-section">
+      <!-- <section class="team-section">
       <div class="team-header">
         <h1>Nuestro Equipo</h1>
         <p>Las entidades y profesionales que conforman nuestra organización</p>
@@ -103,29 +169,29 @@
           </mat-card-content>
         </mat-card>
       </div>
-    </section>
+    </section> -->
 
-    <!-- Allies Section -->
-    <section class="features">
-      <h2 class="section-title">Nuestros Aliados</h2>
-      <!-- Ally Slider -->
-      <app-ally-slider></app-ally-slider>
-    </section>
+      <!-- Allies Section -->
+      <section class="features">
+        <h2 class="section-title">Nuestros Aliados</h2>
+        <!-- Ally Slider -->
+        <app-ally-slider></app-ally-slider>
+      </section>
 
-    <!-- Call to Action Section -->
-    <section class="hero">
-      <div class="hero-content">
-        <h1>El Futuro Empieza Aquí</h1>
-        <hr class="solid" />
-        <p class="text-justify">
-          {{ textDescripcion2 }}
-        </p>
+      <!-- Call to Action Section -->
+      <section class="hero">
+        <div class="hero-content">
+          <h1>El Futuro Empieza Aquí</h1>
+          <hr class="solid" />
+          <p class="text-justify">
+            {{ textDescripcion2 }}
+          </p>
 
-        <div class="hero-buttons">
-          <a routerLink="/contacto" class="btn primary">Contáctanos</a>
+          <div class="hero-buttons">
+            <a routerLink="/contacto" class="btn primary">Contáctanos</a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     </div>
   </div>
 </div>

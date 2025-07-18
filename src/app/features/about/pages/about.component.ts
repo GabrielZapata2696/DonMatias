@@ -25,7 +25,7 @@ export class AboutComponent {
   textDescripcion2 = ` Nuestra trayectoria respalda lo que hacemos: somos un Fondo con resultados medibles, visión transformadora y un claro enfoque territorial.
 Estamos listos para ser su aliado estratégico y construir juntos soluciones reales que impacten positivamente a las comunidades.`;
 
-  constructor(private imageService: ImageService) {}
+  constructor(public imageService: ImageService) {}
 
   teamMembers = [
     {
@@ -80,4 +80,59 @@ Estamos listos para ser su aliado estratégico y construir juntos soluciones rea
       description: 'Trabajamos por y para las comunidades.'
     }
   ];
+
+  benefits = [
+    {
+      number: '1.',
+      title: 'La mejor calificación',
+      description: 'Contamos con una calificación institucional destacada, que respalda nuestra solidez operativa, legal y financiera. Somos garantía de confianza y respaldo.',
+      image: 'nosotros/1-mejor-calificacion.jpg'
+    },
+    {
+      number: '2.',
+      title: 'Supervisión y control de calidad',
+      description: 'Cada proyecto es supervisado con rigurosidad técnica. Nos aseguramos de cumplir con los más altos estándares en cada fase, desde el diseño hasta la entrega final.',
+      image: 'nosotros/2-control-calidad.jpg'
+    },
+    {
+      number: '3.',
+      title: 'Transparencia en cada proceso',
+      description: 'Actuamos con total transparencia administrativa, jurídica y financiera. Nuestras operaciones son abiertas, auditables y siempre alineadas con la normatividad vigente.',
+      image: 'nosotros/3-transparencia.png'
+    },
+    {
+      number: '4.',
+      title: 'Administración oportuna de recursos públicos',
+      description: 'Manejamos los recursos públicos con responsabilidad y cumplimiento estricto de los tiempos establecidos. Nos caracterizamos por la eficiencia y el respeto al presupuesto.',
+      image: 'nosotros/4-admin-recursos.png'
+    },
+    {
+      number: '5.',
+      title: 'Calidad en la gestión de los proyectos',
+      description: 'No solo ejecutamos, sino que garantizamos resultados. Nuestra gestión combina planificación estratégica, enfoque territorial y visión transformadora.',
+      image: 'nosotros/5-calidad-gestion.png'
+    },
+    {
+      number: '6.',
+      title: 'Asesoría personalizada en cada proceso',
+      description: 'Acompañamos a nuestros aliados con asesoría técnica y jurídica en cada etapa, asegurando soluciones a la medida de cada necesidad.',
+      image: 'nosotros/6-asesoria-personal.jpg'
+    }
+  ];
+
+  // Helper method to get image URL
+  getImageUrl(imagePath: string): string {
+    return this.imageService.getImageUrl(imagePath);
+  }
+
+  // Helper method to check if benefit is even (for alternating layout)
+  isEven(index: number): boolean {
+    return index % 2 === 0;
+  }
+
+  // Helper method to handle image loading errors
+  onImageError(event: Event): void {
+    const img = event.target as HTMLImageElement;
+    img.src = this.imageService.getFallbackImageUrl();
+  }
 }

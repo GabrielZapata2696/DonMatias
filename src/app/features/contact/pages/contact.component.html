@@ -1,6 +1,6 @@
 <div class="contact-container">
   <header class="contact-header">
-    <h1>Contáctenos</h1>
+    <h1>Contáctanos</h1>
     <p>Estamos aquí para ayudarle. Póngase en contacto con nosotros para discutir cómo podemos ayudar a su negocio a crecer.</p>
   </header>
 
@@ -58,9 +58,10 @@
             </mat-error>
           </mat-form-field>
 
-          <button mat-raised-button color="primary" type="submit" [disabled]="!contactForm.valid">
-            <mat-icon>send</mat-icon>
-            Enviar Mensaje
+          <button mat-raised-button color="primary" type="submit" [disabled]="!contactForm.valid || isSubmitting">
+            <mat-icon *ngIf="!isSubmitting">send</mat-icon>
+            <mat-icon *ngIf="isSubmitting" class="spinning">hourglass_empty</mat-icon>
+            {{ isSubmitting ? 'Enviando...' : 'Enviar Mensaje' }}
           </button>
         </form>
       </mat-card>

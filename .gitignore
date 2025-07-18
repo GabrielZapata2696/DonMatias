@@ -41,6 +41,13 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# Environment files with sensitive data
+# Note: Only add these if you want to exclude them from Git
+# Angular environment files are typically included but be careful with sensitive data
+# /src/environments/environment.ts
+# /src/environments/environment.prod.ts
+# /src/environments/environment.*.ts
+
 # External images (excluded from build, served from separate deployment)
 /external-images
 /public
