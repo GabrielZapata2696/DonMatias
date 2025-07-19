@@ -7,11 +7,9 @@ export const environment = {
   // EmailJS Configuration
   emailjs: {
     
-        serviceId: 'YOUR_PRODUCTION_SERVICE_ID',
-    templateId: 'YOUR_PRODUCTION_TEMPLATE_ID',
-    publicKey: 'YOUR_PRODUCTION_PUBLIC_KEY'
+    serviceId: 'service_edt_donmatias',
+    templateId: 'template_5peobdh',
+    publicKey: 'Boa9tpr1hUd5XVK1G'
   }
 };
-// serviceId: 'service_edt_donmatias',
-    // templateId: 'template_5peobdh',
-    // publicKey: 'Boa9tpr1hUd5XVK1G'
+
